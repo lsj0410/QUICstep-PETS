@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Artifact Appendix
 
 Paper title: **QUICstep: Evaluating connection migraton based QUIC censorship circumvention**
@@ -91,10 +90,10 @@ sudo cat /etc/wireguard/private.key | wg pubkey | sudo tee /etc/wireguard/public
 
 In the client machine, create `/etc/wireguard/wg_qs.conf` and `/etc/wireguard/wg_vpn.conf`.
 Note that `/etc/wireguard` is only accessible in sudo.
-The content of these files should correspond to `quicstep-config/wg_qs.conf` and `quicstep-config/wg_vpn.conf` in this repository, with the keys and IP addresses being those values in your machines.
+The content of these files should correspond to `quicstep-config/client/wg_qs.conf` and `quicstep-config/client/wg_vpn.conf` in this repository, with the keys and IP addresses being those values in your machines.
 
 In the proxy machine, create `/etc/wireguard/wg0.conf`.
-The content of this file should correspond to `quicstep-config/wg0.conf` in this repository, with the keys and IP address being those values in your machines.
+The content of this file should correspond to `quicstep-config/proxy/wg0.conf` in this repository, with the keys and IP address being those values in your machines.
 
 ### Testing the Environment
 
@@ -199,6 +198,3 @@ Our implementation in particular can be altered to support handshake channels th
 We encourage other researchers to create implementations of QUICstep with other secure channels.
 
 [^1]: Any secure, blocking resistant but potentially high-latency channel (e.g. VPN)
-=======
-# QUICstep-PETS
->>>>>>> bad51198dc87e61322ea85213ee60195dfeb4fd4

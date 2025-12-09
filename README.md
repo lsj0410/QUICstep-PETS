@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Artifact Appendix
 
 Paper title: **QUICstep: Evaluating connection migraton based QUIC censorship circumvention**
@@ -199,6 +198,3 @@ Our implementation in particular can be altered to support handshake channels th
 We encourage other researchers to create implementations of QUICstep with other secure channels.
 
 [^1]: Any secure, blocking resistant but potentially high-latency channel (e.g. VPN)
-=======
-# QUICstep-PETS
->>>>>>> bad51198dc87e61322ea85213ee60195dfeb4fd4

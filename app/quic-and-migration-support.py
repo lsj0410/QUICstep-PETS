@@ -11,6 +11,7 @@ import subprocess
 import pandas as pd
 import socket
 import pyasn
+import random
 
 asndb = pyasn.pyasn('ipasn_20251119.dat')
 trancofile = 'tranco_20251119.csv'
@@ -111,10 +112,11 @@ if __name__ == '__main__':
     write.close()
     
     with open(trancofile) as csvfile:
-        csv_reader = csv.reader(csvfile)
-        top_rows = list(islice(csv_reader, num))
-        pool = Pool(workers)
-        h3_domains = pool.map(test_h3, top_rows)
+        csv_reader = list(csv.reader(csvfile))
+        top_rows = random.sample(csv_reader, num)
+
+    pool = Pool(workers)
+    h3_domains = pool.map(test_h3, top_rows)
 
     df_output = pd.read_csv(otxt, delimiter = '\t')
     df_output = df_output.sort_values(by = 'Num')

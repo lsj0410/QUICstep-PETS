@@ -1,0 +1,17 @@
+crate_name = chromium
+crate_type = rlib
+output_extension = .rlib
+output_dir = clang_x64_for_rust_host_build_tools/obj/build/rust/chromium_prelude
+rustflags = --edition=2021 -Dunsafe_op_in_unsafe_fn -Dwarnings -Aunused-imports -Cforce-unwind-tables=yes -Crelocation-model=pic -Coverflow-checks=on -Cdefault-linker-libraries -Zdep-info-omit-d-target -Zmacro-backtrace -Zremap-cwd-prefix=. --color=always --target=x86_64-unknown-linux-gnu -Cembed-bitcode=no -Clto=no --cfg cr_rustc_revision=\"b13a71a2e77f4625d1a2b8a5b9488414686ebca9-1-llvmorg-19-init-6501-g5b544b51\" -Copt-level=3 -Funsafe_code
+rustenv = OUT_DIR=../../../out/Default/clang_x64_for_rust_host_build_tools/gen/build/rust/chromium_prelude/chromium_prelude
+label_name = chromium_prelude
+target_out_dir = clang_x64_for_rust_host_build_tools/obj/build/rust/chromium_prelude
+target_output_name = chromium
+
+build clang_x64_for_rust_host_build_tools/obj/build/rust/chromium_prelude/libchromium.rlib: clang_x64_for_rust_host_build_tools_rust_rlib ../../build/rust/chromium_prelude/chromium_prelude.rs | ../../build/rust/chromium_prelude/chromium_prelude.rs clang_x64_for_rust_host_build_tools/libimport_attribute.so || clang_x64_for_rust_host_build_tools/obj/build/rust/std/prebuilt_rustc_copy_to_sysroot.stamp clang_x64_for_rust_host_build_tools/obj/third_party/rust/proc_macro2/v1/proc_macro2_lib_v1_build_script_output.stamp clang_x64_for_rust_host_build_tools/obj/build/rust/chromium_prelude/import_attribute.stamp clang_x64_for_rust_host_build_tools/obj/build/rust/std/std.stamp
+  source_file_part = chromium_prelude.rs
+  source_name_part = chromium_prelude
+  externs = --extern import_attribute=clang_x64_for_rust_host_build_tools/libimport_attribute.so
+  rustdeps = -Ldependency=clang_x64_for_rust_host_build_tools -Clink-arg=../../third_party/llvm-build/Release+Asserts/lib/clang/19/lib/x86_64-unknown-linux-gnu/libclang_rt.builtins.a
+  ldflags =
+  sources = ../../build/rust/chromium_prelude/chromium_prelude.rs

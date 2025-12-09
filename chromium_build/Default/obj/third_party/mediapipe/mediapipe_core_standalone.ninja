@@ -1,0 +1,206 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE -DCR_CLANG_REVISION=\"llvmorg-19-init-6501-g5b544b51-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=6ddb5cb9499f29383155d7ce6b31f7d1102e6ed9 -DCR_SYSROOT_KEY=20230611T210420Z-2 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DMEDIAPIPE_PROTO_LITE=1 -DMEDIAPIPE_DISABLE_GPU=1 -DFLATBUFFERS_LOCALE_INDEPENDENT=0 -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS -DABSL_CONSUME_DLL -DABSL_FLAGS_STRIP_NAMES=0 -DEIGEN_MPL2_ONLY -DEIGEN_MAX_ALIGN_BYTES=64 -DEIGEN_HAS_TYPE_TRAITS=0
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/mediapipe/src -I../../third_party/mediapipe/shims -I../../third_party/mediapipe/shims/protobuf -I../../third_party/flatbuffers/src/include -I../../third_party/flatbuffers/src/src -I../../third_party/flatbuffers/src -I../../third_party/flatbuffers/generated -I../../third_party/protobuf/src -Igen/protoc_out -Igen/third_party/mediapipe/src -Igen/third_party/mediapipe/shims/protobuf -I../../third_party/abseil-cpp -I../../third_party/gemmlowp/src -I../../third_party/re2/src -I../../third_party/tensorflow-text/src -I../../third_party/tensorflow-text/shims -I../../third_party/zlib -I../../third_party/tflite/shims -I../../third_party/tflite/src -I../../third_party/tflite/src/third_party/xla/third_party/tsl -I../../third_party/pthreadpool/src/include -I../../third_party/eigen3/src -Igen/third_party/tflite/src -I../../third_party/neon_2_sse/src
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -mllvm -split-threshold-for-reg-with-hint=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-allow-auto-typedefs-better-nested -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-to-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang disable-check-raw-ptr-to-stack-allocated-error -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=tools/ -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=/third_party/dawn/ -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-fields -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ref-fields -Xclang -add-plugin -Xclang unsafe-buffers -Xclang -plugin-arg-unsafe-buffers -Xclang ../../build/config/unsafe_buffers_paths.txt -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wno-cast-function-type -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-invalid-offsetof -Wno-vla-extension -Wno-thread-safety-reference-return -Werror -Wno-unused-function -Wno-deprecated-declarations -Wno-macro-redefined -Wno-constant-conversion -Wno-shorten-64-to-32 -DPROTOBUF_ALLOW_DEPRECATED=1 -Wno-deprecated-declarations -Wno-gnu-inline-cpp-without-extern
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../third_party/libc++/src/include -isystem../../third_party/libc++abi/src/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden -Wenum-compare-conditional -Wno-c++11-narrowing-const-reference
+label_name = mediapipe_core_standalone
+target_out_dir = obj/third_party/mediapipe
+target_output_name = libmediapipe_core_standalone
+
+build obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp: stamp obj/build/chromeos_buildflags.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/mediapipe/mediapipe_flatbuffer_schema_gen.stamp obj/third_party/mediapipe/mediapipe_proto_gen.stamp obj/third_party/mediapipe/stamp_metadata_parser_version.stamp obj/third_party/tflite/tflite_op_resolver_proto_gen.stamp obj/third_party/tflite/tflite_proto_gen.stamp
+build obj/third_party/mediapipe/mediapipe_core_standalone/calculator_base.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/calculator_base.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = calculator_base.cc
+  source_name_part = calculator_base
+build obj/third_party/mediapipe/mediapipe_core_standalone/calculator_context.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/calculator_context.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = calculator_context.cc
+  source_name_part = calculator_context
+build obj/third_party/mediapipe/mediapipe_core_standalone/calculator_context_manager.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/calculator_context_manager.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = calculator_context_manager.cc
+  source_name_part = calculator_context_manager
+build obj/third_party/mediapipe/mediapipe_core_standalone/calculator_contract.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/calculator_contract.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = calculator_contract.cc
+  source_name_part = calculator_contract
+build obj/third_party/mediapipe/mediapipe_core_standalone/calculator_graph.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/calculator_graph.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = calculator_graph.cc
+  source_name_part = calculator_graph
+build obj/third_party/mediapipe/mediapipe_core_standalone/calculator_node.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/calculator_node.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = calculator_node.cc
+  source_name_part = calculator_node
+build obj/third_party/mediapipe/mediapipe_core_standalone/calculator_state.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/calculator_state.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = calculator_state.cc
+  source_name_part = calculator_state
+build obj/third_party/mediapipe/mediapipe_core_standalone/collection_item_id.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/collection_item_id.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = collection_item_id.cc
+  source_name_part = collection_item_id
+build obj/third_party/mediapipe/mediapipe_core_standalone/counter_factory.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/counter_factory.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = counter_factory.cc
+  source_name_part = counter_factory
+build obj/third_party/mediapipe/mediapipe_core_standalone/delegating_executor.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/delegating_executor.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = delegating_executor.cc
+  source_name_part = delegating_executor
+build obj/third_party/mediapipe/mediapipe_core_standalone/clock.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/deps/clock.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = clock.cc
+  source_name_part = clock
+build obj/third_party/mediapipe/mediapipe_core_standalone/file_helpers.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/deps/file_helpers.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = file_helpers.cc
+  source_name_part = file_helpers
+build obj/third_party/mediapipe/mediapipe_core_standalone/file_path.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/deps/file_path.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = file_path.cc
+  source_name_part = file_path
+build obj/third_party/mediapipe/mediapipe_core_standalone/monotonic_clock.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/deps/monotonic_clock.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = monotonic_clock.cc
+  source_name_part = monotonic_clock
+build obj/third_party/mediapipe/mediapipe_core_standalone/registration.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/deps/registration.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = registration.cc
+  source_name_part = registration
+build obj/third_party/mediapipe/mediapipe_core_standalone/registration_token.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/deps/registration_token.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = registration_token.cc
+  source_name_part = registration_token
+build obj/third_party/mediapipe/mediapipe_core_standalone/ret_check.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/deps/ret_check.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = ret_check.cc
+  source_name_part = ret_check
+build obj/third_party/mediapipe/mediapipe_core_standalone/status.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/deps/status.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = status.cc
+  source_name_part = status
+build obj/third_party/mediapipe/mediapipe_core_standalone/status_builder.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/deps/status_builder.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = status_builder.cc
+  source_name_part = status_builder
+build obj/third_party/mediapipe/mediapipe_core_standalone/threadpool_std_thread_impl.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/deps/threadpool_std_thread_impl.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = threadpool_std_thread_impl.cc
+  source_name_part = threadpool_std_thread_impl
+build obj/third_party/mediapipe/mediapipe_core_standalone/topologicalsorter.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/deps/topologicalsorter.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = topologicalsorter.cc
+  source_name_part = topologicalsorter
+build obj/third_party/mediapipe/mediapipe_core_standalone/executor.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/executor.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = executor.cc
+  source_name_part = executor
+build obj/third_party/mediapipe/mediapipe_core_standalone/tensor.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/formats/tensor.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = tensor.cc
+  source_name_part = tensor
+build obj/third_party/mediapipe/mediapipe_core_standalone/tensor_ahwb.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/formats/tensor_ahwb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = tensor_ahwb.cc
+  source_name_part = tensor_ahwb
+build obj/third_party/mediapipe/mediapipe_core_standalone/graph_output_stream.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/graph_output_stream.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = graph_output_stream.cc
+  source_name_part = graph_output_stream
+build obj/third_party/mediapipe/mediapipe_core_standalone/graph_service_manager.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/graph_service_manager.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = graph_service_manager.cc
+  source_name_part = graph_service_manager
+build obj/third_party/mediapipe/mediapipe_core_standalone/input_side_packet_handler.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/input_side_packet_handler.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = input_side_packet_handler.cc
+  source_name_part = input_side_packet_handler
+build obj/third_party/mediapipe/mediapipe_core_standalone/input_stream_handler.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/input_stream_handler.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = input_stream_handler.cc
+  source_name_part = input_stream_handler
+build obj/third_party/mediapipe/mediapipe_core_standalone/input_stream_manager.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/input_stream_manager.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = input_stream_manager.cc
+  source_name_part = input_stream_manager
+build obj/third_party/mediapipe/mediapipe_core_standalone/input_stream_shard.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/input_stream_shard.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = input_stream_shard.cc
+  source_name_part = input_stream_shard
+build obj/third_party/mediapipe/mediapipe_core_standalone/legacy_calculator_support.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/legacy_calculator_support.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = legacy_calculator_support.cc
+  source_name_part = legacy_calculator_support
+build obj/third_party/mediapipe/mediapipe_core_standalone/output_side_packet_impl.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/output_side_packet_impl.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = output_side_packet_impl.cc
+  source_name_part = output_side_packet_impl
+build obj/third_party/mediapipe/mediapipe_core_standalone/output_stream_handler.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/output_stream_handler.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = output_stream_handler.cc
+  source_name_part = output_stream_handler
+build obj/third_party/mediapipe/mediapipe_core_standalone/output_stream_manager.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/output_stream_manager.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = output_stream_manager.cc
+  source_name_part = output_stream_manager
+build obj/third_party/mediapipe/mediapipe_core_standalone/output_stream_shard.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/output_stream_shard.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = output_stream_shard.cc
+  source_name_part = output_stream_shard
+build obj/third_party/mediapipe/mediapipe_core_standalone/packet.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/packet.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = packet.cc
+  source_name_part = packet
+build obj/third_party/mediapipe/mediapipe_core_standalone/packet_generator_graph.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/packet_generator_graph.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = packet_generator_graph.cc
+  source_name_part = packet_generator_graph
+build obj/third_party/mediapipe/mediapipe_core_standalone/packet_type.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/packet_type.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = packet_type.cc
+  source_name_part = packet_type
+build obj/third_party/mediapipe/mediapipe_core_standalone/scheduler.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/scheduler.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = scheduler.cc
+  source_name_part = scheduler
+build obj/third_party/mediapipe/mediapipe_core_standalone/scheduler_queue.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/scheduler_queue.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = scheduler_queue.cc
+  source_name_part = scheduler_queue
+build obj/third_party/mediapipe/mediapipe_core_standalone/subgraph.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/subgraph.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = subgraph.cc
+  source_name_part = subgraph
+build obj/third_party/mediapipe/mediapipe_core_standalone/thread_pool_executor.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/thread_pool_executor.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = thread_pool_executor.cc
+  source_name_part = thread_pool_executor
+build obj/third_party/mediapipe/mediapipe_core_standalone/timestamp.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/timestamp.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = timestamp.cc
+  source_name_part = timestamp
+build obj/third_party/mediapipe/mediapipe_core_standalone/fill_packet_set.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/fill_packet_set.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = fill_packet_set.cc
+  source_name_part = fill_packet_set
+build obj/third_party/mediapipe/mediapipe_core_standalone/name_util.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/name_util.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = name_util.cc
+  source_name_part = name_util
+build obj/third_party/mediapipe/mediapipe_core_standalone/options_field_util.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/options_field_util.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = options_field_util.cc
+  source_name_part = options_field_util
+build obj/third_party/mediapipe/mediapipe_core_standalone/options_registry.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/options_registry.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = options_registry.cc
+  source_name_part = options_registry
+build obj/third_party/mediapipe/mediapipe_core_standalone/options_syntax_util.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/options_syntax_util.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = options_syntax_util.cc
+  source_name_part = options_syntax_util
+build obj/third_party/mediapipe/mediapipe_core_standalone/options_util.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/options_util.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = options_util.cc
+  source_name_part = options_util
+build obj/third_party/mediapipe/mediapipe_core_standalone/proto_util_lite.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/proto_util_lite.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = proto_util_lite.cc
+  source_name_part = proto_util_lite
+build obj/third_party/mediapipe/mediapipe_core_standalone/sink.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/sink.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = sink.cc
+  source_name_part = sink
+build obj/third_party/mediapipe/mediapipe_core_standalone/status_util.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/status_util.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = status_util.cc
+  source_name_part = status_util
+build obj/third_party/mediapipe/mediapipe_core_standalone/subgraph_expansion.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/subgraph_expansion.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = subgraph_expansion.cc
+  source_name_part = subgraph_expansion
+build obj/third_party/mediapipe/mediapipe_core_standalone/tag_map.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/tag_map.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = tag_map.cc
+  source_name_part = tag_map
+build obj/third_party/mediapipe/mediapipe_core_standalone/tag_map_helper.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/tag_map_helper.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = tag_map_helper.cc
+  source_name_part = tag_map_helper
+build obj/third_party/mediapipe/mediapipe_core_standalone/template_expander.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/template_expander.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = template_expander.cc
+  source_name_part = template_expander
+build obj/third_party/mediapipe/mediapipe_core_standalone/validate.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/validate.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = validate.cc
+  source_name_part = validate
+build obj/third_party/mediapipe/mediapipe_core_standalone/validate_name.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/tool/validate_name.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = validate_name.cc
+  source_name_part = validate_name
+build obj/third_party/mediapipe/mediapipe_core_standalone/validated_graph_config.o: cxx ../../third_party/mediapipe/src/mediapipe/framework/validated_graph_config.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = validated_graph_config.cc
+  source_name_part = validated_graph_config
+build obj/third_party/mediapipe/mediapipe_core_standalone/cpu_util.o: cxx ../../third_party/mediapipe/src/mediapipe/util/cpu_util.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = cpu_util.cc
+  source_name_part = cpu_util
+build obj/third_party/mediapipe/mediapipe_core_standalone/label_map_util.o: cxx ../../third_party/mediapipe/src/mediapipe/util/label_map_util.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = label_map_util.cc
+  source_name_part = label_map_util
+build obj/third_party/mediapipe/mediapipe_core_standalone/resource_util.o: cxx ../../third_party/mediapipe/src/mediapipe/util/resource_util.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = resource_util.cc
+  source_name_part = resource_util
+build obj/third_party/mediapipe/mediapipe_core_standalone/error_reporter.o: cxx ../../third_party/mediapipe/src/mediapipe/util/tflite/error_reporter.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = error_reporter.cc
+  source_name_part = error_reporter
+build obj/third_party/mediapipe/mediapipe_core_standalone/resource_util_default.o: cxx ../../third_party/mediapipe/src/mediapipe/util/resource_util_default.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_core_standalone.inputdeps.stamp
+  source_file_part = resource_util_default.cc
+  source_name_part = resource_util_default
+
+build obj/third_party/mediapipe/libmediapipe_core_standalone.a: alink obj/third_party/mediapipe/mediapipe_core_standalone/calculator_base.o obj/third_party/mediapipe/mediapipe_core_standalone/calculator_context.o obj/third_party/mediapipe/mediapipe_core_standalone/calculator_context_manager.o obj/third_party/mediapipe/mediapipe_core_standalone/calculator_contract.o obj/third_party/mediapipe/mediapipe_core_standalone/calculator_graph.o obj/third_party/mediapipe/mediapipe_core_standalone/calculator_node.o obj/third_party/mediapipe/mediapipe_core_standalone/calculator_state.o obj/third_party/mediapipe/mediapipe_core_standalone/collection_item_id.o obj/third_party/mediapipe/mediapipe_core_standalone/counter_factory.o obj/third_party/mediapipe/mediapipe_core_standalone/delegating_executor.o obj/third_party/mediapipe/mediapipe_core_standalone/clock.o obj/third_party/mediapipe/mediapipe_core_standalone/file_helpers.o obj/third_party/mediapipe/mediapipe_core_standalone/file_path.o obj/third_party/mediapipe/mediapipe_core_standalone/monotonic_clock.o obj/third_party/mediapipe/mediapipe_core_standalone/registration.o obj/third_party/mediapipe/mediapipe_core_standalone/registration_token.o obj/third_party/mediapipe/mediapipe_core_standalone/ret_check.o obj/third_party/mediapipe/mediapipe_core_standalone/status.o obj/third_party/mediapipe/mediapipe_core_standalone/status_builder.o obj/third_party/mediapipe/mediapipe_core_standalone/threadpool_std_thread_impl.o obj/third_party/mediapipe/mediapipe_core_standalone/topologicalsorter.o obj/third_party/mediapipe/mediapipe_core_standalone/executor.o obj/third_party/mediapipe/mediapipe_core_standalone/tensor.o obj/third_party/mediapipe/mediapipe_core_standalone/tensor_ahwb.o obj/third_party/mediapipe/mediapipe_core_standalone/graph_output_stream.o obj/third_party/mediapipe/mediapipe_core_standalone/graph_service_manager.o obj/third_party/mediapipe/mediapipe_core_standalone/input_side_packet_handler.o obj/third_party/mediapipe/mediapipe_core_standalone/input_stream_handler.o obj/third_party/mediapipe/mediapipe_core_standalone/input_stream_manager.o obj/third_party/mediapipe/mediapipe_core_standalone/input_stream_shard.o obj/third_party/mediapipe/mediapipe_core_standalone/legacy_calculator_support.o obj/third_party/mediapipe/mediapipe_core_standalone/output_side_packet_impl.o obj/third_party/mediapipe/mediapipe_core_standalone/output_stream_handler.o obj/third_party/mediapipe/mediapipe_core_standalone/output_stream_manager.o obj/third_party/mediapipe/mediapipe_core_standalone/output_stream_shard.o obj/third_party/mediapipe/mediapipe_core_standalone/packet.o obj/third_party/mediapipe/mediapipe_core_standalone/packet_generator_graph.o obj/third_party/mediapipe/mediapipe_core_standalone/packet_type.o obj/third_party/mediapipe/mediapipe_core_standalone/scheduler.o obj/third_party/mediapipe/mediapipe_core_standalone/scheduler_queue.o obj/third_party/mediapipe/mediapipe_core_standalone/subgraph.o obj/third_party/mediapipe/mediapipe_core_standalone/thread_pool_executor.o obj/third_party/mediapipe/mediapipe_core_standalone/timestamp.o obj/third_party/mediapipe/mediapipe_core_standalone/fill_packet_set.o obj/third_party/mediapipe/mediapipe_core_standalone/name_util.o obj/third_party/mediapipe/mediapipe_core_standalone/options_field_util.o obj/third_party/mediapipe/mediapipe_core_standalone/options_registry.o obj/third_party/mediapipe/mediapipe_core_standalone/options_syntax_util.o obj/third_party/mediapipe/mediapipe_core_standalone/options_util.o obj/third_party/mediapipe/mediapipe_core_standalone/proto_util_lite.o obj/third_party/mediapipe/mediapipe_core_standalone/sink.o obj/third_party/mediapipe/mediapipe_core_standalone/status_util.o obj/third_party/mediapipe/mediapipe_core_standalone/subgraph_expansion.o obj/third_party/mediapipe/mediapipe_core_standalone/tag_map.o obj/third_party/mediapipe/mediapipe_core_standalone/tag_map_helper.o obj/third_party/mediapipe/mediapipe_core_standalone/template_expander.o obj/third_party/mediapipe/mediapipe_core_standalone/validate.o obj/third_party/mediapipe/mediapipe_core_standalone/validate_name.o obj/third_party/mediapipe/mediapipe_core_standalone/validated_graph_config.o obj/third_party/mediapipe/mediapipe_core_standalone/cpu_util.o obj/third_party/mediapipe/mediapipe_core_standalone/label_map_util.o obj/third_party/mediapipe/mediapipe_core_standalone/resource_util.o obj/third_party/mediapipe/mediapipe_core_standalone/error_reporter.o obj/third_party/mediapipe/mediapipe_core_standalone/resource_util_default.o | ../../third_party/llvm-build/Release+Asserts/lib/clang/19/lib/x86_64-unknown-linux-gnu/libclang_rt.builtins.a ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_flatbuffer_schema.stamp obj/third_party/mediapipe/libmediapipe_proto.a obj/third_party/mediapipe/mediapipe_shims.stamp obj/third_party/mediapipe/stamp_metadata_parser_version.stamp ./libthird_party_abseil-cpp_absl.so.TOC obj/third_party/gemmlowp/gemmlowp.stamp ./libthird_party_protobuf_protobuf_lite.so.TOC obj/third_party/re2/libre2.a obj/third_party/tensorflow-text/libtensorflow-text.a ./libchrome_zlib.so.TOC obj/third_party/zlib/libminizip.a obj/third_party/tflite/libtflite_standalone.a obj/third_party/tflite/libtflite_builtin_op_resolver_standalone.a obj/third_party/flatbuffers/flatbuffers.stamp obj/third_party/mediapipe/any_lite_proto_impl.stamp ./libthird_party_icu_icui18n.so.TOC ./libicuuc.so.TOC obj/third_party/tflite/tflite_kernel_common_headers.stamp obj/third_party/tflite/tflite_kernel_internals.stamp obj/third_party/tflite/fft2d_deps.stamp obj/third_party/fft2d/fft2d.stamp obj/third_party/tflite/tflite_public_headers.stamp obj/third_party/farmhash/farmhash.stamp obj/third_party/fp16/fp16.stamp obj/third_party/neon_2_sse/neon_2_sse.stamp obj/third_party/ruy/ruy.stamp obj/third_party/ruy/ruy_check_macros.stamp obj/third_party/ruy/ruy_context.stamp obj/third_party/ruy/ruy_allocator.stamp obj/third_party/ruy/ruy_opt_set.stamp obj/third_party/ruy/ruy_size_util.stamp obj/third_party/ruy/ruy_system_aligned_alloc.stamp obj/third_party/ruy/ruy_ctx.stamp obj/third_party/ruy/ruy_cpuinfo.stamp obj/third_party/ruy/ruy_cpu_cache_params.stamp obj/third_party/ruy/ruy_platform.stamp ./libcpuinfo.so.TOC obj/third_party/ruy/ruy_have_built_path_for.stamp obj/third_party/ruy/ruy_have_built_path_for_avx.stamp obj/third_party/ruy/ruy_have_built_path_for_avx2_fma.stamp obj/third_party/ruy/ruy_have_built_path_for_avx512.stamp obj/third_party/ruy/ruy_path.stamp obj/third_party/ruy/ruy_performance_advisory.stamp obj/third_party/ruy/ruy_prepacked_cache.stamp obj/third_party/ruy/ruy_mat.stamp obj/third_party/ruy/ruy_matrix.stamp obj/third_party/ruy/ruy_profiler_instrumentation.stamp obj/third_party/ruy/ruy_instrumentation.stamp obj/third_party/ruy/ruy_thread_pool.stamp obj/third_party/ruy/ruy_blocking_counter.stamp obj/third_party/ruy/ruy_time.stamp obj/third_party/ruy/ruy_wait.stamp obj/third_party/ruy/ruy_denormal.stamp obj/third_party/ruy/ruy_trace.stamp obj/third_party/ruy/ruy_side_pair.stamp obj/third_party/ruy/ruy_tune.stamp obj/third_party/ruy/ruy_context_get_ctx.stamp obj/third_party/ruy/ruy_frontend.stamp obj/third_party/ruy/ruy_create_trmul_params.stamp obj/third_party/ruy/ruy_kernel.stamp obj/third_party/ruy/ruy_apply_multiplier.stamp obj/third_party/ruy/ruy_mul_params.stamp obj/third_party/ruy/ruy_kernel_arm.stamp obj/third_party/ruy/ruy_asm_helpers.stamp obj/third_party/ruy/ruy_kernel_common.stamp obj/third_party/ruy/ruy_kernel_avx.stamp obj/third_party/ruy/ruy_kernel_avx2_fma.stamp obj/third_party/ruy/ruy_kernel_avx512.stamp obj/third_party/ruy/ruy_pack.stamp obj/third_party/ruy/ruy_pack_arm.stamp obj/third_party/ruy/ruy_pack_common.stamp obj/third_party/ruy/ruy_pack_avx.stamp obj/third_party/ruy/ruy_pack_avx2_fma.stamp obj/third_party/ruy/ruy_pack_avx512.stamp obj/third_party/ruy/ruy_trmul_params.stamp obj/third_party/ruy/ruy_prepare_packed_matrices.stamp obj/third_party/ruy/ruy_trmul.stamp obj/third_party/ruy/ruy_block_map.stamp obj/third_party/ruy/ruy_validate.stamp obj/third_party/tflite/libtflite_proto.a obj/third_party/tflite/libtflite_kernels_standalone.a obj/third_party/pthreadpool/pthreadpool_standalone.stamp obj/third_party/fxdiv/fxdiv.stamp obj/third_party/tflite/tflite_logging_standalone.stamp obj/third_party/xnnpack/xnnpack_standalone.stamp obj/third_party/xnnpack/amalgam_avx-no-avx2-no-f16c-no-fma_standalone.stamp obj/third_party/xnnpack/amalgam_avx2-avxvnni-f16c-fma_standalone.stamp obj/third_party/xnnpack/amalgam_avx512f_standalone.stamp obj/third_party/xnnpack/amalgam_f16c-fma-avx2_standalone.stamp obj/third_party/xnnpack/amalgam_f16c-fma-avx512f-avx512cd-avx512bw-avx512dq-avx512vl-avx512vbmi_standalone.stamp obj/third_party/xnnpack/amalgam_f16c-fma-avx512f-avx512cd-avx512bw-avx512dq-avx512vl-avx512vnni-gfni_standalone.stamp obj/third_party/xnnpack/amalgam_f16c-fma-avx512f-avx512cd-avx512bw-avx512dq-avx512vl-avx512vnni_standalone.stamp obj/third_party/xnnpack/amalgam_f16c-fma-avx512f-avx512cd-avx512bw-avx512dq-avx512vl_standalone.stamp obj/third_party/xnnpack/amalgam_f16c-fma-no-avx2_standalone.stamp obj/third_party/xnnpack/amalgam_f16c-no-avx2-no-fma_standalone.stamp obj/third_party/xnnpack/amalgam_sse2-no-sse3_standalone.stamp obj/third_party/xnnpack/amalgam_sse4.1-no-sse4.2_standalone.stamp obj/third_party/xnnpack/amalgam_ssse3-no-sse4.1_standalone.stamp obj/third_party/xnnpack/amalgam_x64_standalone.stamp obj/third_party/xnnpack/configs_x64_standalone.stamp obj/third_party/xnnpack/enums_x64_standalone.stamp obj/third_party/xnnpack/operators_x64_standalone.stamp obj/third_party/xnnpack/subgraph_x64_standalone.stamp obj/third_party/xnnpack/tables_x64_standalone.stamp obj/third_party/tflite/libtflite_builtin_op_resolver_internals.a obj/third_party/tflite/libtflite_op_resolver_proto.a
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/third_party/mediapipe

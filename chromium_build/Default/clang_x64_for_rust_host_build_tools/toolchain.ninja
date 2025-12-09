@@ -1,0 +1,181 @@
+rule clang_x64_for_rust_host_build_tools_rust_staticlib
+  command = "python3" "../../build/rust/rustc_wrapper.py" --rustc=../../third_party/rust-toolchain/bin/rustc --depfile=${output_dir}/${target_output_name}${output_extension}.d --rsp=${output_dir}/${target_output_name}${output_extension}.rsp -- -Clinker="../../third_party/llvm-build/Release+Asserts/bin/clang++" --crate-name ${crate_name} ${in} --crate-type ${crate_type} ${rustflags} --emit=dep-info=${output_dir}/${target_output_name}${output_extension}.d,link -o ${output_dir}/${target_output_name}${output_extension} LDFLAGS RUSTENV ${rustenv}
+  description = RUST(STATICLIB) ${out}
+  rspfile = ${output_dir}/${target_output_name}${output_extension}.rsp
+  rspfile_content = ${rustdeps} ${externs} SOURCES ${sources}
+  depfile = ${output_dir}/${target_output_name}${output_extension}.d
+  deps = gcc
+rule clang_x64_for_rust_host_build_tools_rust_bin
+  command = "python3" "../../build/rust/rustc_wrapper.py" --rustc=../../third_party/rust-toolchain/bin/rustc --depfile=${output_dir}/${target_output_name}${output_extension}.d --rsp=${output_dir}/${target_output_name}${output_extension}.rsp -- -Clinker="../../third_party/llvm-build/Release+Asserts/bin/clang++" --crate-name ${crate_name} ${in} --crate-type ${crate_type} ${rustflags} --emit=dep-info=${output_dir}/${target_output_name}${output_extension}.d,link -o ${output_dir}/${target_output_name}${output_extension} LDFLAGS ${ldflags}  RUSTENV ${rustenv}
+  description = RUST(BIN) ${out}
+  rspfile = ${output_dir}/${target_output_name}${output_extension}.rsp
+  rspfile_content = ${rustdeps} ${externs} SOURCES ${sources}
+  depfile = ${output_dir}/${target_output_name}${output_extension}.d
+  deps = gcc
+  pool = build_toolchain_link_pool
+rule clang_x64_for_rust_host_build_tools_rust_macro
+  command = "python3" "../../build/rust/rustc_wrapper.py" --rustc=../../third_party/rust-toolchain/bin/rustc --depfile=${output_dir}/${target_output_name}${output_extension}.d --rsp=${output_dir}/${target_output_name}${output_extension}.rsp -- -Clinker="../../third_party/llvm-build/Release+Asserts/bin/clang++" --crate-name ${crate_name} ${in} --crate-type ${crate_type} ${rustflags} --emit=dep-info=${output_dir}/${target_output_name}${output_extension}.d,link -o ${output_dir}/${target_output_name}${output_extension} LDFLAGS ${ldflags}  RUSTENV ${rustenv}
+  description = RUST(MACRO) ${out}
+  rspfile = ${output_dir}/${target_output_name}${output_extension}.rsp
+  rspfile_content = ${rustdeps} ${externs} SOURCES ${sources}
+  depfile = ${output_dir}/${target_output_name}${output_extension}.d
+  deps = gcc
+  pool = build_toolchain_link_pool
+rule clang_x64_for_rust_host_build_tools_link
+  command = "python3" "../../build/toolchain/gcc_link_wrapper.py" --output="${output_dir}/${target_output_name}${output_extension}" -- ../../third_party/llvm-build/Release+Asserts/bin/clang++ ${ldflags} -o "${output_dir}/${target_output_name}${output_extension}" -Wl,--start-group @"${output_dir}/${target_output_name}${output_extension}.rsp" ${solibs} -Wl,--end-group  ${libs} ${rlibs}
+  description = LINK ${output_dir}/${target_output_name}${output_extension}
+  rspfile = ${output_dir}/${target_output_name}${output_extension}.rsp
+  rspfile_content = ${in}
+  pool = build_toolchain_link_pool
+rule clang_x64_for_rust_host_build_tools_rust_rlib
+  command = "python3" "../../build/rust/rustc_wrapper.py" --rustc=../../third_party/rust-toolchain/bin/rustc --depfile=${output_dir}/lib${target_output_name}${output_extension}.d --rsp=${output_dir}/lib${target_output_name}${output_extension}.rsp -- -Clinker="../../third_party/llvm-build/Release+Asserts/bin/clang++" --crate-name ${crate_name} ${in} --crate-type ${crate_type} ${rustflags} --emit=dep-info=${output_dir}/lib${target_output_name}${output_extension}.d,link -o ${output_dir}/lib${target_output_name}${output_extension} LDFLAGS RUSTENV ${rustenv}
+  description = RUST ${out}
+  rspfile = ${output_dir}/lib${target_output_name}${output_extension}.rsp
+  rspfile_content = ${rustdeps} ${externs} SOURCES ${sources}
+  depfile = ${output_dir}/lib${target_output_name}${output_extension}.d
+  deps = gcc
+rule clang_x64_for_rust_host_build_tools_cxx
+  command =  ../../third_party/llvm-build/Release+Asserts/bin/clang++ -MMD -MF ${out}.d ${defines} ${include_dirs} ${cflags} ${cflags_cc} -c ${in} -o ${out}
+  description = CXX ${out}
+  depfile = ${out}.d
+  deps = gcc
+rule clang_x64_for_rust_host_build_tools_solink
+  command = "python3" "../../build/toolchain/gcc_solink_wrapper.py" --readelf="../../third_party/llvm-build/Release+Asserts/bin/llvm-readelf" --nm="../../third_party/llvm-build/Release+Asserts/bin/llvm-nm"  --sofile="${output_dir}/${target_output_name}${output_extension}" --tocfile="${output_dir}/${target_output_name}${output_extension}.TOC" --output="${output_dir}/${target_output_name}${output_extension}" -- ../../third_party/llvm-build/Release+Asserts/bin/clang++ -shared -Wl,-soname="${target_output_name}${output_extension}" ${ldflags} -o "${output_dir}/${target_output_name}${output_extension}" @"${output_dir}/${target_output_name}${output_extension}.rsp" ${rlibs} 
+  description = SOLINK ${output_dir}/${target_output_name}${output_extension}
+  rspfile = ${output_dir}/${target_output_name}${output_extension}.rsp
+  rspfile_content = -Wl,--whole-archive ${in} ${solibs} -Wl,--no-whole-archive ${libs}
+  pool = build_toolchain_link_pool
+  restat = 1
+rule clang_x64_for_rust_host_build_tools_stamp
+  command = touch ${out}
+  description = STAMP ${out}
+rule clang_x64_for_rust_host_build_tools_solink_module
+  command = ../../third_party/llvm-build/Release+Asserts/bin/clang++ -shared ${ldflags} -o "${output_dir}/${target_output_name}${output_extension}" -Wl,-soname="${target_output_name}${output_extension}" @"${output_dir}/${target_output_name}${output_extension}.rsp"
+  description = SOLINK_MODULE ${output_dir}/${target_output_name}${output_extension}
+  rspfile = ${output_dir}/${target_output_name}${output_extension}.rsp
+  rspfile_content = -Wl,--whole-archive ${in} ${solibs} -Wl,--no-whole-archive ${libs} ${rlibs}
+  pool = build_toolchain_link_pool
+rule clang_x64_for_rust_host_build_tools_rust_cdylib
+  command = "python3" "../../build/rust/rustc_wrapper.py" --rustc=../../third_party/rust-toolchain/bin/rustc --depfile=${output_dir}/${target_output_name}${output_extension}.d --rsp=${output_dir}/${target_output_name}${output_extension}.rsp -- -Clinker="../../third_party/llvm-build/Release+Asserts/bin/clang++" --crate-name ${crate_name} ${in} --crate-type ${crate_type} ${rustflags} --emit=dep-info=${output_dir}/${target_output_name}${output_extension}.d,link -o ${output_dir}/${target_output_name}${output_extension} LDFLAGS ${ldflags}  RUSTENV ${rustenv}
+  description = RUST(CDYLIB) ${out}
+  rspfile = ${output_dir}/${target_output_name}${output_extension}.rsp
+  rspfile_content = ${rustdeps} ${externs} SOURCES ${sources}
+  depfile = ${output_dir}/${target_output_name}${output_extension}.d
+  deps = gcc
+  pool = build_toolchain_link_pool
+rule clang_x64_for_rust_host_build_tools_alink
+  command = rm -f ${out} && "../../third_party/llvm-build/Release+Asserts/bin/llvm-ar" ${arflags} -r -c -s -D ${out} @"${out}.rsp"
+  description = AR ${out}
+  rspfile = ${out}.rsp
+  rspfile_content = ${in}
+rule clang_x64_for_rust_host_build_tools_cc
+  command =  ../../third_party/llvm-build/Release+Asserts/bin/clang -MMD -MF ${out}.d ${defines} ${include_dirs} ${cflags} ${cflags_c} -c ${in} -o ${out}
+  description = CC ${out}
+  depfile = ${out}.d
+  deps = gcc
+rule clang_x64_for_rust_host_build_tools_asm
+  command = ../../third_party/llvm-build/Release+Asserts/bin/clang -MMD -MF ${out}.d ${defines} ${include_dirs} ${asmflags} -c ${in} -o ${out}
+  description = ASM ${out}
+  depfile = ${out}.d
+  deps = gcc
+rule clang_x64_for_rust_host_build_tools_copy
+  command = ln -f ${in} ${out} 2>/dev/null || (rm -rf ${out} && cp -af ${in} ${out})
+  description = COPY ${in} ${out}
+
+build clang_x64_for_rust_host_build_tools/obj/build/config/executable_deps.stamp: clang_x64_for_rust_host_build_tools_stamp
+subninja clang_x64_for_rust_host_build_tools/obj/build/rust/chromium_prelude/chromium_prelude.ninja
+build clang_x64_for_rust_host_build_tools/obj/build/rust/chromium_prelude/import_attribute.stamp: clang_x64_for_rust_host_build_tools_stamp clang_x64_for_rust_host_build_tools/libimport_attribute.so
+subninja clang_x64_for_rust_host_build_tools/obj/build/rust/chromium_prelude/import_attribute__proc_macro.ninja
+rule __build_rust_std_find_stdlib___build_toolchain_linux_clang_x64_for_rust_host_build_tools__rule
+  command = python3 ../../build/rust/std/find_std_rlibs.py --rust-bin-dir ../../third_party/rust-toolchain/bin --output clang_x64_for_rust_host_build_tools/obj/build/rust/std --depfile clang_x64_for_rust_host_build_tools/obj/build/rust/std/stdlib.d --depfile-target std --rustc-revision b13a71a2e77f4625d1a2b8a5b9488414686ebca9-1-llvmorg-19-init-6501-g5b544b51 --target x86_64-unknown-linux-gnu
+  description = ACTION //build/rust/std:find_stdlib(//build/toolchain/linux:clang_x64_for_rust_host_build_tools)
+  restat = 1
+  pool = build_toolchain_action_pool
+
+build clang_x64_for_rust_host_build_tools/obj/build/rust/std/libstd.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/liballoc.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libcfg_if.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libcompiler_builtins.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libcore.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libgetopts.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libhashbrown.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/liblibc.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libpanic_abort.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libpanic_unwind.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/librustc_demangle.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libstd_detect.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libtest.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libunicode_width.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libunwind.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libaddr2line.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libadler.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libgimli.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libmemchr.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libminiz_oxide.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libobject.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libproc_macro.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libprofiler_builtins.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/librustc_std_workspace_alloc.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/librustc_std_workspace_core.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/librustc_std_workspace_std.rlib: __build_rust_std_find_stdlib___build_toolchain_linux_clang_x64_for_rust_host_build_tools__rule | ../../build/rust/std/find_std_rlibs.py
+  depfile = clang_x64_for_rust_host_build_tools/obj/build/rust/std/stdlib.d
+
+build clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp: clang_x64_for_rust_host_build_tools_stamp clang_x64_for_rust_host_build_tools/obj/build/rust/std/libstd.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/liballoc.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libcfg_if.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libcompiler_builtins.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libcore.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libgetopts.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libhashbrown.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/liblibc.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libpanic_abort.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libpanic_unwind.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/librustc_demangle.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libstd_detect.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libtest.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libunicode_width.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libunwind.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libaddr2line.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libadler.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libgimli.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libmemchr.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libminiz_oxide.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libobject.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libproc_macro.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/libprofiler_builtins.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/librustc_std_workspace_alloc.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/librustc_std_workspace_core.rlib clang_x64_for_rust_host_build_tools/obj/build/rust/std/librustc_std_workspace_std.rlib
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libstd.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libstd.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/liballoc.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/liballoc.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libcfg_if.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libcfg_if.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libcompiler_builtins.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libcompiler_builtins.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libcore.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libcore.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libgetopts.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libgetopts.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libhashbrown.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libhashbrown.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/liblibc.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/liblibc.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libpanic_abort.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libpanic_abort.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libpanic_unwind.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libpanic_unwind.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_demangle.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/librustc_demangle.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libstd_detect.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libstd_detect.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libtest.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libtest.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libunicode_width.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libunicode_width.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libunwind.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libunwind.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libaddr2line.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libaddr2line.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libadler.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libadler.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libgimli.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libgimli.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libmemchr.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libmemchr.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libminiz_oxide.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libminiz_oxide.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libobject.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libobject.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libproc_macro.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libproc_macro.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libprofiler_builtins.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/libprofiler_builtins.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_std_workspace_alloc.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/librustc_std_workspace_alloc.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_std_workspace_core.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/librustc_std_workspace_core.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+build clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_std_workspace_std.rlib: clang_x64_for_rust_host_build_tools_copy clang_x64_for_rust_host_build_tools/obj/build/rust/std/librustc_std_workspace_std.rlib || clang_x64_for_rust_host_build_tools/obj/build/rust/std/find_stdlib.stamp
+
+build clang_x64_for_rust_host_build_tools/obj/build/rust/std/prebuilt_rustc_copy_to_sysroot.stamp: clang_x64_for_rust_host_build_tools_stamp clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libstd.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/liballoc.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libcfg_if.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libcompiler_builtins.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libcore.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libgetopts.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libhashbrown.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/liblibc.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libpanic_abort.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libpanic_unwind.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_demangle.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libstd_detect.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libtest.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libunicode_width.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libunwind.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libaddr2line.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libadler.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libgimli.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libmemchr.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libminiz_oxide.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libobject.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libproc_macro.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/libprofiler_builtins.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_std_workspace_alloc.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_std_workspace_core.rlib clang_x64_for_rust_host_build_tools/prebuilt_rustc_sysroot/lib/rustlib/x86_64-unknown-linux-gnu/lib/librustc_std_workspace_std.rlib
+build clang_x64_for_rust_host_build_tools/obj/build/rust/std/std.stamp: clang_x64_for_rust_host_build_tools_stamp clang_x64_for_rust_host_build_tools/obj/build/rust/std/prebuilt_rustc_copy_to_sysroot.stamp
+subninja clang_x64_for_rust_host_build_tools/obj/build/rust/std/rules/compiler_builtins_compiler_builtins_vunknown_build_script.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/build/rust/std/rules/libc_libc_vunknown_build_script.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/build/rust/std/rules/memchr_memchr_vunknown_build_script.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/build/rust/std/rules/std_std_vunknown_build_script.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/build/rust/tests/test_bin_crate/test_bin_crate_test_bin_crate_vunknown_build_script.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/build/rust/tests/test_proc_macro_crate/test_proc_macro_crate__proc_macro.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/build/rust/tests/test_rlib_crate/test_rlib_crate_associated_bin_test_rlib_crate_associated_bin_vunknown_build_script.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/build/rust/tests/test_rlib_crate/test_rlib_crate_target1_v0_2_build_script.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/build/rust/tests/test_rlib_crate/test_rlib_crate_target2_v0_2_build_script.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/build/rust/tests/test_rlib_crate_testonly/testonly_build_dep.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/build/rust/tests/test_rlib_crate_testonly/testonly_target_testonly_target_vunknown_build_script.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/testing/rust_gtest_interop/gtest_attribute__proc_macro.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/anstyle/v1/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/anyhow/v1/anyhow_lib_v1_build_script.ninja
+rule __third_party_rust_anyhow_v1_anyhow_lib_v1_build_script_output___build_toolchain_linux_clang_x64_for_rust_host_build_tools__rule
+  command = python3 ../../build/rust/run_build_script.py --build-script clang_x64_for_rust_host_build_tools/anyhow_lib_v1_build_script --output clang_x64_for_rust_host_build_tools/gen/third_party/rust/anyhow/v1/lib/cargo_flags.rs --rust-prefix ../../third_party/rust-toolchain/bin --out-dir clang_x64_for_rust_host_build_tools/gen/third_party/rust/anyhow/v1/lib --src-dir ../../third_party/rust/chromium_crates_io/vendor/anyhow-1.0.81 --target x86_64-unknown-linux-gnu --features std --env CARGO_PKG_AUTHORS=David\$ Tolnay\$ \<dtolnay@gmail.com\> CARGO_PKG_VERSION=1.0.81 CARGO_PKG_NAME=anyhow CARGO_PKG_DESCRIPTION=Flexible\$ concrete\$ Error\$ type\$ built\$ on\$ std$:$:error$:$:Error CARGO_MANIFEST_DIR=.
+  description = ACTION //third_party/rust/anyhow/v1:anyhow_lib_v1_build_script_output(//build/toolchain/linux:clang_x64_for_rust_host_build_tools)
+  restat = 1
+  pool = build_toolchain_action_pool
+
+build clang_x64_for_rust_host_build_tools/gen/third_party/rust/anyhow/v1/lib/cargo_flags.rs: __third_party_rust_anyhow_v1_anyhow_lib_v1_build_script_output___build_toolchain_linux_clang_x64_for_rust_host_build_tools__rule | ../../build/rust/run_build_script.py clang_x64_for_rust_host_build_tools/anyhow_lib_v1_build_script clang_x64_for_rust_host_build_tools/anyhow_lib_v1_build_script
+
+build clang_x64_for_rust_host_build_tools/obj/third_party/rust/anyhow/v1/anyhow_lib_v1_build_script_output.stamp: clang_x64_for_rust_host_build_tools_stamp clang_x64_for_rust_host_build_tools/gen/third_party/rust/anyhow/v1/lib/cargo_flags.rs
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/anyhow/v1/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/clap/v4/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/clap_builder/v4/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/clap_lex/v0_7/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/codespan_reporting/v0_11/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/cxxbridge_cmd/v1/cxxbridge.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/cxxbridge_macro/v1/lib__proc_macro.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/either/v1/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/itertools/v0_11/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/proc_macro2/v1/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/proc_macro2/v1/proc_macro2_lib_v1_build_script.ninja
+rule __third_party_rust_proc_macro2_v1_proc_macro2_lib_v1_build_script_output___build_toolchain_linux_clang_x64_for_rust_host_build_tools__rule
+  command = python3 ../../build/rust/run_build_script.py --build-script clang_x64_for_rust_host_build_tools/proc_macro2_lib_v1_build_script --output clang_x64_for_rust_host_build_tools/gen/third_party/rust/proc_macro2/v1/lib/cargo_flags.rs --rust-prefix ../../third_party/rust-toolchain/bin --out-dir clang_x64_for_rust_host_build_tools/gen/third_party/rust/proc_macro2/v1/lib --src-dir ../../third_party/rust/chromium_crates_io/vendor/proc-macro2-1.0.79 --target x86_64-unknown-linux-gnu --features proc-macro span-locations --env CARGO_PKG_AUTHORS=David\$ Tolnay\$ \<dtolnay@gmail.com\>,\$ Alex\$ Crichton\$ \<alex@alexcrichton.com\> CARGO_PKG_VERSION=1.0.79 CARGO_PKG_NAME=proc-macro2 CARGO_PKG_DESCRIPTION=A\$ substitute\$ implementation\$ of\$ the\$ compiler\'s\$ \`proc_macro\`\$ API\$ to\$ decouple\$ token-based\$ libraries\$ from\$ the\$ procedural\$ macro\$ use\$ case. CARGO_MANIFEST_DIR=.
+  description = ACTION //third_party/rust/proc_macro2/v1:proc_macro2_lib_v1_build_script_output(//build/toolchain/linux:clang_x64_for_rust_host_build_tools)
+  restat = 1
+  pool = build_toolchain_action_pool
+
+build clang_x64_for_rust_host_build_tools/gen/third_party/rust/proc_macro2/v1/lib/cargo_flags.rs: __third_party_rust_proc_macro2_v1_proc_macro2_lib_v1_build_script_output___build_toolchain_linux_clang_x64_for_rust_host_build_tools__rule | ../../build/rust/run_build_script.py clang_x64_for_rust_host_build_tools/proc_macro2_lib_v1_build_script clang_x64_for_rust_host_build_tools/proc_macro2_lib_v1_build_script
+
+build clang_x64_for_rust_host_build_tools/obj/third_party/rust/proc_macro2/v1/proc_macro2_lib_v1_build_script_output.stamp: clang_x64_for_rust_host_build_tools_stamp clang_x64_for_rust_host_build_tools/gen/third_party/rust/proc_macro2/v1/lib/cargo_flags.rs
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/prost_derive/v0_12/lib__proc_macro.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/quote/v1/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/serde/v1/serde_lib_v1_build_script.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/serde_derive/v1/lib__proc_macro.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/serde_json_lenient/v0_1/serde_json_lenient_lib_v0_1_build_script.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/small_ctor/v0_1/lib__proc_macro.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/strsim/v0_11/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/syn/v2/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/termcolor/v1/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/unicode_ident/v1/lib.ninja
+subninja clang_x64_for_rust_host_build_tools/obj/third_party/rust/unicode_width/v0_1/lib.ninja

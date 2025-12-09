@@ -1,0 +1,97 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE -DCR_CLANG_REVISION=\"llvmorg-19-init-6501-g5b544b51-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=6ddb5cb9499f29383155d7ce6b31f7d1102e6ed9 -DCR_SYSROOT_KEY=20230611T210420Z-2 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -Igen/third_party/perfetto -I../../third_party/protobuf/src -Igen/protoc_out
+cflags = -Wall -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wno-cast-function-type -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-invalid-offsetof -Wno-vla-extension -Wno-thread-safety-reference-return -Wshadow -Werror -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -mllvm -split-threshold-for-reg-with-hint=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-allow-auto-typedefs-better-nested -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-to-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang disable-check-raw-ptr-to-stack-allocated-error -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=tools/ -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=/third_party/dawn/ -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-fields -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ref-fields -Xclang -add-plugin -Xclang unsafe-buffers -Xclang -plugin-arg-unsafe-buffers -Xclang ../../build/config/unsafe_buffers_paths.txt -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wenum-compare-conditional -Wno-c++11-narrowing-const-reference -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../third_party/libc++/src/include -isystem../../third_party/libc++abi/src/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = lite
+target_out_dir = obj/third_party/perfetto/protos/perfetto/trace/track_event
+target_output_name = liblite
+
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_active_processes.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_active_processes.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_active_processes.pb.cc
+  source_name_part = chrome_active_processes.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_application_state_info.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_application_state_info.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_application_state_info.pb.cc
+  source_name_part = chrome_application_state_info.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_compositor_scheduler_state.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_compositor_scheduler_state.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_compositor_scheduler_state.pb.cc
+  source_name_part = chrome_compositor_scheduler_state.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_content_settings_event_info.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_content_settings_event_info.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_content_settings_event_info.pb.cc
+  source_name_part = chrome_content_settings_event_info.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_frame_reporter.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_frame_reporter.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_frame_reporter.pb.cc
+  source_name_part = chrome_frame_reporter.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_histogram_sample.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_histogram_sample.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_histogram_sample.pb.cc
+  source_name_part = chrome_histogram_sample.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_keyed_service.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_keyed_service.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_keyed_service.pb.cc
+  source_name_part = chrome_keyed_service.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_latency_info.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_latency_info.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_latency_info.pb.cc
+  source_name_part = chrome_latency_info.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_legacy_ipc.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_legacy_ipc.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_legacy_ipc.pb.cc
+  source_name_part = chrome_legacy_ipc.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_message_pump.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_message_pump.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_message_pump.pb.cc
+  source_name_part = chrome_message_pump.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_mojo_event_info.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_mojo_event_info.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_mojo_event_info.pb.cc
+  source_name_part = chrome_mojo_event_info.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_process_descriptor.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_process_descriptor.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_process_descriptor.pb.cc
+  source_name_part = chrome_process_descriptor.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_renderer_scheduler_state.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_renderer_scheduler_state.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_renderer_scheduler_state.pb.cc
+  source_name_part = chrome_renderer_scheduler_state.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_thread_descriptor.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_thread_descriptor.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_thread_descriptor.pb.cc
+  source_name_part = chrome_thread_descriptor.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_user_event.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_user_event.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_user_event.pb.cc
+  source_name_part = chrome_user_event.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_window_handle_event_info.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/chrome_window_handle_event_info.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = chrome_window_handle_event_info.pb.cc
+  source_name_part = chrome_window_handle_event_info.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/counter_descriptor.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/counter_descriptor.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = counter_descriptor.pb.cc
+  source_name_part = counter_descriptor.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/debug_annotation.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/debug_annotation.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = debug_annotation.pb.cc
+  source_name_part = debug_annotation.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/log_message.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/log_message.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = log_message.pb.cc
+  source_name_part = log_message.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/pixel_modem.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/pixel_modem.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = pixel_modem.pb.cc
+  source_name_part = pixel_modem.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/process_descriptor.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/process_descriptor.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = process_descriptor.pb.cc
+  source_name_part = process_descriptor.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/range_of_interest.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/range_of_interest.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = range_of_interest.pb.cc
+  source_name_part = range_of_interest.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/screenshot.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/screenshot.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = screenshot.pb.cc
+  source_name_part = screenshot.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/source_location.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/source_location.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = source_location.pb.cc
+  source_name_part = source_location.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/task_execution.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/task_execution.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = task_execution.pb.cc
+  source_name_part = task_execution.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/thread_descriptor.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/thread_descriptor.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = thread_descriptor.pb.cc
+  source_name_part = thread_descriptor.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/track_descriptor.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/track_descriptor.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = track_descriptor.pb.cc
+  source_name_part = track_descriptor.pb
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/track_event.pb.o: cxx gen/third_party/perfetto/protos/perfetto/trace/track_event/track_event.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  source_file_part = track_event.pb.cc
+  source_name_part = track_event.pb
+
+build obj/third_party/perfetto/protos/perfetto/trace/track_event/liblite.a: alink obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_active_processes.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_application_state_info.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_compositor_scheduler_state.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_content_settings_event_info.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_frame_reporter.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_histogram_sample.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_keyed_service.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_latency_info.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_legacy_ipc.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_message_pump.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_mojo_event_info.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_process_descriptor.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_renderer_scheduler_state.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_thread_descriptor.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_user_event.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/chrome_window_handle_event_info.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/counter_descriptor.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/debug_annotation.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/log_message.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/pixel_modem.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/process_descriptor.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/range_of_interest.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/screenshot.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/source_location.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/task_execution.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/thread_descriptor.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/track_descriptor.pb.o obj/third_party/perfetto/protos/perfetto/trace/track_event/lite/track_event.pb.o | ../../third_party/llvm-build/Release+Asserts/lib/clang/19/lib/x86_64-unknown-linux-gnu/libclang_rt.builtins.a ../../build/config/unsafe_buffers_paths.txt || ./libthird_party_protobuf_protobuf_lite.so.TOC obj/third_party/perfetto/protos/perfetto/trace/track_event/lite_gen.stamp
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/third_party/perfetto/protos/perfetto/trace/track_event

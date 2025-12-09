@@ -1,0 +1,4 @@
+gen/chrome/grit/hats_resources.h
+gen/chrome/grit/hats_resources_map.cc
+gen/chrome/grit/hats_resources_map.h
+gen/chrome/hats_resources.pak

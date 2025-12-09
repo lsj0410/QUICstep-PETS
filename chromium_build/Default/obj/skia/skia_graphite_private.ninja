@@ -1,0 +1,305 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE -DCR_CLANG_REVISION=\"llvmorg-19-init-6501-g5b544b51-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=6ddb5cb9499f29383155d7ce6b31f7d1102e6ed9 -DCR_SYSROOT_KEY=20230611T210420Z-2 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DSK_ENABLE_SKSL -DSK_UNTIL_CRBUG_1187654_IS_FIXED -DSK_USER_CONFIG_HEADER=\"../../skia/config/SkUserConfig.h\" -DSK_WIN_FONTMGR_NO_SIMULATIONS -DSK_DISABLE_LEGACY_INIT_DECODERS -DSK_SLUG_DISABLE_LEGACY_DESERIALIZE -DSK_DISABLE_LEGACY_VULKAN_BACKENDSEMAPHORE -DSK_DISABLE_LEGACY_CREATE_CHARACTERIZATION -DSK_DISABLE_LEGACY_VULKAN_MUTABLE_TEXTURE_STATE -DSK_CODEC_DECODES_JPEG -DSK_ENCODE_JPEG -DSK_ENCODE_PNG -DSK_ENCODE_WEBP -DSKIA_DLL -DSKCMS_API=__attribute__\(\(visibility\(\"default\"\)\)\) -DSK_GANESH -DSK_GPU_WORKAROUNDS_HEADER=\"gpu/config/gpu_driver_bug_workaround_autogen.h\" -DSK_GL -DSK_VULKAN=1 -DSK_GRAPHITE -DSK_DAWN -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR -DIS_SKIA_IMPL=1 -DSKIA_IMPLEMENTATION=1 -DSK_FREETYPE_MINIMUM_RUNTIME_VERSION_IS_BUILD_VERSION -DSK_TYPEFACE_FACTORY_FREETYPE -DSK_FONTMGR_FREETYPE_EMPTY_AVAILABLE -DSK_GAMMA_EXPONENT=1.2 -DSK_GAMMA_CONTRAST=0.2 -DSK_DEFAULT_FONT_CACHE_LIMIT=20971520
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/skia -Igen/third_party/skia -I../../third_party/wuffs/src/release/c -I../../third_party/vulkan/include -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src -Igen/third_party/dawn/include -I../../third_party/dawn/include
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -mllvm -split-threshold-for-reg-with-hint=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-allow-auto-typedefs-better-nested -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-to-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang disable-check-raw-ptr-to-stack-allocated-error -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=tools/ -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=/third_party/dawn/ -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-fields -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ref-fields -Xclang -add-plugin -Xclang unsafe-buffers -Xclang -plugin-arg-unsafe-buffers -Xclang ../../build/config/unsafe_buffers_paths.txt -Wno-redundant-parens -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wno-cast-function-type -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-invalid-offsetof -Wno-vla-extension -Wno-thread-safety-reference-return -Werror
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../third_party/libc++/src/include -isystem../../third_party/libc++abi/src/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden -Wenum-compare-conditional -Wno-c++11-narrowing-const-reference
+label_name = skia_graphite_private
+target_out_dir = obj/skia
+target_output_name = skia_graphite_private
+
+build obj/skia/skia_graphite_private.inputdeps.stamp: stamp obj/gpu/config/workaround_list.stamp obj/third_party/dawn/include/dawn/cpp_headers_gen.stamp obj/third_party/dawn/include/dawn/headers_gen.stamp
+build obj/skia/skia_graphite_private/AtlasProvider.o: cxx ../../third_party/skia/src/gpu/graphite/AtlasProvider.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = AtlasProvider.cpp
+  source_name_part = AtlasProvider
+build obj/skia/skia_graphite_private/BackendSemaphore.o: cxx ../../third_party/skia/src/gpu/graphite/BackendSemaphore.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = BackendSemaphore.cpp
+  source_name_part = BackendSemaphore
+build obj/skia/skia_graphite_private/BackendTexture.o: cxx ../../third_party/skia/src/gpu/graphite/BackendTexture.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = BackendTexture.cpp
+  source_name_part = BackendTexture
+build obj/skia/skia_graphite_private/Buffer.o: cxx ../../third_party/skia/src/gpu/graphite/Buffer.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Buffer.cpp
+  source_name_part = Buffer
+build obj/skia/skia_graphite_private/BufferManager.o: cxx ../../third_party/skia/src/gpu/graphite/BufferManager.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = BufferManager.cpp
+  source_name_part = BufferManager
+build obj/skia/skia_graphite_private/Caps.o: cxx ../../third_party/skia/src/gpu/graphite/Caps.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Caps.cpp
+  source_name_part = Caps
+build obj/skia/skia_graphite_private/ClientMappedBufferManager.o: cxx ../../third_party/skia/src/gpu/graphite/ClientMappedBufferManager.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = ClientMappedBufferManager.cpp
+  source_name_part = ClientMappedBufferManager
+build obj/skia/skia_graphite_private/ClipStack_graphite.o: cxx ../../third_party/skia/src/gpu/graphite/ClipStack_graphite.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = ClipStack_graphite.cpp
+  source_name_part = ClipStack_graphite
+build obj/skia/skia_graphite_private/CommandBuffer.o: cxx ../../third_party/skia/src/gpu/graphite/CommandBuffer.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = CommandBuffer.cpp
+  source_name_part = CommandBuffer
+build obj/skia/skia_graphite_private/ComputePipeline.o: cxx ../../third_party/skia/src/gpu/graphite/ComputePipeline.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = ComputePipeline.cpp
+  source_name_part = ComputePipeline
+build obj/skia/skia_graphite_private/Context.o: cxx ../../third_party/skia/src/gpu/graphite/Context.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Context.cpp
+  source_name_part = Context
+build obj/skia/skia_graphite_private/ContextUtils.o: cxx ../../third_party/skia/src/gpu/graphite/ContextUtils.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = ContextUtils.cpp
+  source_name_part = ContextUtils
+build obj/skia/skia_graphite_private/Device.o: cxx ../../third_party/skia/src/gpu/graphite/Device.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Device.cpp
+  source_name_part = Device
+build obj/skia/skia_graphite_private/DrawAtlas.o: cxx ../../third_party/skia/src/gpu/graphite/DrawAtlas.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DrawAtlas.cpp
+  source_name_part = DrawAtlas
+build obj/skia/skia_graphite_private/DrawContext.o: cxx ../../third_party/skia/src/gpu/graphite/DrawContext.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DrawContext.cpp
+  source_name_part = DrawContext
+build obj/skia/skia_graphite_private/DrawList.o: cxx ../../third_party/skia/src/gpu/graphite/DrawList.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DrawList.cpp
+  source_name_part = DrawList
+build obj/skia/skia_graphite_private/DrawPass.o: cxx ../../third_party/skia/src/gpu/graphite/DrawPass.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DrawPass.cpp
+  source_name_part = DrawPass
+build obj/skia/skia_graphite_private/DrawWriter.o: cxx ../../third_party/skia/src/gpu/graphite/DrawWriter.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DrawWriter.cpp
+  source_name_part = DrawWriter
+build obj/skia/skia_graphite_private/GlobalCache.o: cxx ../../third_party/skia/src/gpu/graphite/GlobalCache.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = GlobalCache.cpp
+  source_name_part = GlobalCache
+build obj/skia/skia_graphite_private/GpuWorkSubmission.o: cxx ../../third_party/skia/src/gpu/graphite/GpuWorkSubmission.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = GpuWorkSubmission.cpp
+  source_name_part = GpuWorkSubmission
+build obj/skia/skia_graphite_private/GraphicsPipeline.o: cxx ../../third_party/skia/src/gpu/graphite/GraphicsPipeline.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = GraphicsPipeline.cpp
+  source_name_part = GraphicsPipeline
+build obj/skia/skia_graphite_private/GraphiteResourceKey.o: cxx ../../third_party/skia/src/gpu/graphite/GraphiteResourceKey.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = GraphiteResourceKey.cpp
+  source_name_part = GraphiteResourceKey
+build obj/skia/skia_graphite_private/ImageFactories.o: cxx ../../third_party/skia/src/gpu/graphite/ImageFactories.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = ImageFactories.cpp
+  source_name_part = ImageFactories
+build obj/skia/skia_graphite_private/Image_Base_Graphite.o: cxx ../../third_party/skia/src/gpu/graphite/Image_Base_Graphite.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Image_Base_Graphite.cpp
+  source_name_part = Image_Base_Graphite
+build obj/skia/skia_graphite_private/Image_Graphite.o: cxx ../../third_party/skia/src/gpu/graphite/Image_Graphite.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Image_Graphite.cpp
+  source_name_part = Image_Graphite
+build obj/skia/skia_graphite_private/Image_YUVA_Graphite.o: cxx ../../third_party/skia/src/gpu/graphite/Image_YUVA_Graphite.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Image_YUVA_Graphite.cpp
+  source_name_part = Image_YUVA_Graphite
+build obj/skia/skia_graphite_private/KeyContext.o: cxx ../../third_party/skia/src/gpu/graphite/KeyContext.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = KeyContext.cpp
+  source_name_part = KeyContext
+build obj/skia/skia_graphite_private/KeyHelpers.o: cxx ../../third_party/skia/src/gpu/graphite/KeyHelpers.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = KeyHelpers.cpp
+  source_name_part = KeyHelpers
+build obj/skia/skia_graphite_private/PaintParams.o: cxx ../../third_party/skia/src/gpu/graphite/PaintParams.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = PaintParams.cpp
+  source_name_part = PaintParams
+build obj/skia/skia_graphite_private/PaintParamsKey.o: cxx ../../third_party/skia/src/gpu/graphite/PaintParamsKey.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = PaintParamsKey.cpp
+  source_name_part = PaintParamsKey
+build obj/skia/skia_graphite_private/PathAtlas.o: cxx ../../third_party/skia/src/gpu/graphite/PathAtlas.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = PathAtlas.cpp
+  source_name_part = PathAtlas
+build obj/skia/skia_graphite_private/PipelineData.o: cxx ../../third_party/skia/src/gpu/graphite/PipelineData.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = PipelineData.cpp
+  source_name_part = PipelineData
+build obj/skia/skia_graphite_private/ProxyCache.o: cxx ../../third_party/skia/src/gpu/graphite/ProxyCache.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = ProxyCache.cpp
+  source_name_part = ProxyCache
+build obj/skia/skia_graphite_private/QueueManager.o: cxx ../../third_party/skia/src/gpu/graphite/QueueManager.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = QueueManager.cpp
+  source_name_part = QueueManager
+build obj/skia/skia_graphite_private/RasterPathAtlas.o: cxx ../../third_party/skia/src/gpu/graphite/RasterPathAtlas.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = RasterPathAtlas.cpp
+  source_name_part = RasterPathAtlas
+build obj/skia/skia_graphite_private/RasterPathUtils.o: cxx ../../third_party/skia/src/gpu/graphite/RasterPathUtils.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = RasterPathUtils.cpp
+  source_name_part = RasterPathUtils
+build obj/skia/skia_graphite_private/Recorder.o: cxx ../../third_party/skia/src/gpu/graphite/Recorder.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Recorder.cpp
+  source_name_part = Recorder
+build obj/skia/skia_graphite_private/Recording.o: cxx ../../third_party/skia/src/gpu/graphite/Recording.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Recording.cpp
+  source_name_part = Recording
+build obj/skia/skia_graphite_private/Renderer.o: cxx ../../third_party/skia/src/gpu/graphite/Renderer.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Renderer.cpp
+  source_name_part = Renderer
+build obj/skia/skia_graphite_private/RendererProvider.o: cxx ../../third_party/skia/src/gpu/graphite/RendererProvider.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = RendererProvider.cpp
+  source_name_part = RendererProvider
+build obj/skia/skia_graphite_private/Resource.o: cxx ../../third_party/skia/src/gpu/graphite/Resource.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Resource.cpp
+  source_name_part = Resource
+build obj/skia/skia_graphite_private/ResourceCache.o: cxx ../../third_party/skia/src/gpu/graphite/ResourceCache.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = ResourceCache.cpp
+  source_name_part = ResourceCache
+build obj/skia/skia_graphite_private/ResourceProvider.o: cxx ../../third_party/skia/src/gpu/graphite/ResourceProvider.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = ResourceProvider.cpp
+  source_name_part = ResourceProvider
+build obj/skia/skia_graphite_private/RuntimeEffectDictionary.o: cxx ../../third_party/skia/src/gpu/graphite/RuntimeEffectDictionary.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = RuntimeEffectDictionary.cpp
+  source_name_part = RuntimeEffectDictionary
+build obj/skia/skia_graphite_private/Sampler.o: cxx ../../third_party/skia/src/gpu/graphite/Sampler.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Sampler.cpp
+  source_name_part = Sampler
+build obj/skia/skia_graphite_private/ShaderCodeDictionary.o: cxx ../../third_party/skia/src/gpu/graphite/ShaderCodeDictionary.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = ShaderCodeDictionary.cpp
+  source_name_part = ShaderCodeDictionary
+build obj/skia/skia_graphite_private/SharedContext.o: cxx ../../third_party/skia/src/gpu/graphite/SharedContext.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = SharedContext.cpp
+  source_name_part = SharedContext
+build obj/skia/skia_graphite_private/SpecialImage_Graphite.o: cxx ../../third_party/skia/src/gpu/graphite/SpecialImage_Graphite.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = SpecialImage_Graphite.cpp
+  source_name_part = SpecialImage_Graphite
+build obj/skia/skia_graphite_private/Surface_Graphite.o: cxx ../../third_party/skia/src/gpu/graphite/Surface_Graphite.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Surface_Graphite.cpp
+  source_name_part = Surface_Graphite
+build obj/skia/skia_graphite_private/Texture.o: cxx ../../third_party/skia/src/gpu/graphite/Texture.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Texture.cpp
+  source_name_part = Texture
+build obj/skia/skia_graphite_private/TextureInfo.o: cxx ../../third_party/skia/src/gpu/graphite/TextureInfo.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = TextureInfo.cpp
+  source_name_part = TextureInfo
+build obj/skia/skia_graphite_private/TextureProxy.o: cxx ../../third_party/skia/src/gpu/graphite/TextureProxy.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = TextureProxy.cpp
+  source_name_part = TextureProxy
+build obj/skia/skia_graphite_private/TextureUtils.o: cxx ../../third_party/skia/src/gpu/graphite/TextureUtils.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = TextureUtils.cpp
+  source_name_part = TextureUtils
+build obj/skia/skia_graphite_private/UniformManager.o: cxx ../../third_party/skia/src/gpu/graphite/UniformManager.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = UniformManager.cpp
+  source_name_part = UniformManager
+build obj/skia/skia_graphite_private/UploadBufferManager.o: cxx ../../third_party/skia/src/gpu/graphite/UploadBufferManager.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = UploadBufferManager.cpp
+  source_name_part = UploadBufferManager
+build obj/skia/skia_graphite_private/YUVABackendTextures.o: cxx ../../third_party/skia/src/gpu/graphite/YUVABackendTextures.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = YUVABackendTextures.cpp
+  source_name_part = YUVABackendTextures
+build obj/skia/skia_graphite_private/YUVATextureProxies.o: cxx ../../third_party/skia/src/gpu/graphite/YUVATextureProxies.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = YUVATextureProxies.cpp
+  source_name_part = YUVATextureProxies
+build obj/skia/skia_graphite_private/ComputeStep.o: cxx ../../third_party/skia/src/gpu/graphite/compute/ComputeStep.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = ComputeStep.cpp
+  source_name_part = ComputeStep
+build obj/skia/skia_graphite_private/DispatchGroup.o: cxx ../../third_party/skia/src/gpu/graphite/compute/DispatchGroup.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DispatchGroup.cpp
+  source_name_part = DispatchGroup
+build obj/skia/skia_graphite_private/IntersectionTree.o: cxx ../../third_party/skia/src/gpu/graphite/geom/IntersectionTree.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = IntersectionTree.cpp
+  source_name_part = IntersectionTree
+build obj/skia/skia_graphite_private/Shape.o: cxx ../../third_party/skia/src/gpu/graphite/geom/Shape.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Shape.cpp
+  source_name_part = Shape
+build obj/skia/skia_graphite_private/Transform.o: cxx ../../third_party/skia/src/gpu/graphite/geom/Transform.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = Transform.cpp
+  source_name_part = Transform
+build obj/skia/skia_graphite_private/AnalyticRRectRenderStep.o: cxx ../../third_party/skia/src/gpu/graphite/render/AnalyticRRectRenderStep.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = AnalyticRRectRenderStep.cpp
+  source_name_part = AnalyticRRectRenderStep
+build obj/skia/skia_graphite_private/BitmapTextRenderStep.o: cxx ../../third_party/skia/src/gpu/graphite/render/BitmapTextRenderStep.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = BitmapTextRenderStep.cpp
+  source_name_part = BitmapTextRenderStep
+build obj/skia/skia_graphite_private/CoverBoundsRenderStep.o: cxx ../../third_party/skia/src/gpu/graphite/render/CoverBoundsRenderStep.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = CoverBoundsRenderStep.cpp
+  source_name_part = CoverBoundsRenderStep
+build obj/skia/skia_graphite_private/CoverageMaskRenderStep.o: cxx ../../third_party/skia/src/gpu/graphite/render/CoverageMaskRenderStep.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = CoverageMaskRenderStep.cpp
+  source_name_part = CoverageMaskRenderStep
+build obj/skia/skia_graphite_private/GraphiteVertexFiller.o: cxx ../../third_party/skia/src/gpu/graphite/render/GraphiteVertexFiller.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = GraphiteVertexFiller.cpp
+  source_name_part = GraphiteVertexFiller
+build obj/skia/skia_graphite_private/MiddleOutFanRenderStep.o: cxx ../../third_party/skia/src/gpu/graphite/render/MiddleOutFanRenderStep.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = MiddleOutFanRenderStep.cpp
+  source_name_part = MiddleOutFanRenderStep
+build obj/skia/skia_graphite_private/PerEdgeAAQuadRenderStep.o: cxx ../../third_party/skia/src/gpu/graphite/render/PerEdgeAAQuadRenderStep.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = PerEdgeAAQuadRenderStep.cpp
+  source_name_part = PerEdgeAAQuadRenderStep
+build obj/skia/skia_graphite_private/SDFTextRenderStep.o: cxx ../../third_party/skia/src/gpu/graphite/render/SDFTextRenderStep.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = SDFTextRenderStep.cpp
+  source_name_part = SDFTextRenderStep
+build obj/skia/skia_graphite_private/TessellateCurvesRenderStep.o: cxx ../../third_party/skia/src/gpu/graphite/render/TessellateCurvesRenderStep.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = TessellateCurvesRenderStep.cpp
+  source_name_part = TessellateCurvesRenderStep
+build obj/skia/skia_graphite_private/TessellateStrokesRenderStep.o: cxx ../../third_party/skia/src/gpu/graphite/render/TessellateStrokesRenderStep.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = TessellateStrokesRenderStep.cpp
+  source_name_part = TessellateStrokesRenderStep
+build obj/skia/skia_graphite_private/TessellateWedgesRenderStep.o: cxx ../../third_party/skia/src/gpu/graphite/render/TessellateWedgesRenderStep.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = TessellateWedgesRenderStep.cpp
+  source_name_part = TessellateWedgesRenderStep
+build obj/skia/skia_graphite_private/VerticesRenderStep.o: cxx ../../third_party/skia/src/gpu/graphite/render/VerticesRenderStep.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = VerticesRenderStep.cpp
+  source_name_part = VerticesRenderStep
+build obj/skia/skia_graphite_private/ClearBuffersTask.o: cxx ../../third_party/skia/src/gpu/graphite/task/ClearBuffersTask.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = ClearBuffersTask.cpp
+  source_name_part = ClearBuffersTask
+build obj/skia/skia_graphite_private/ComputeTask.o: cxx ../../third_party/skia/src/gpu/graphite/task/ComputeTask.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = ComputeTask.cpp
+  source_name_part = ComputeTask
+build obj/skia/skia_graphite_private/CopyTask.o: cxx ../../third_party/skia/src/gpu/graphite/task/CopyTask.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = CopyTask.cpp
+  source_name_part = CopyTask
+build obj/skia/skia_graphite_private/DrawTask.o: cxx ../../third_party/skia/src/gpu/graphite/task/DrawTask.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DrawTask.cpp
+  source_name_part = DrawTask
+build obj/skia/skia_graphite_private/RenderPassTask.o: cxx ../../third_party/skia/src/gpu/graphite/task/RenderPassTask.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = RenderPassTask.cpp
+  source_name_part = RenderPassTask
+build obj/skia/skia_graphite_private/SynchronizeToCpuTask.o: cxx ../../third_party/skia/src/gpu/graphite/task/SynchronizeToCpuTask.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = SynchronizeToCpuTask.cpp
+  source_name_part = SynchronizeToCpuTask
+build obj/skia/skia_graphite_private/TaskList.o: cxx ../../third_party/skia/src/gpu/graphite/task/TaskList.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = TaskList.cpp
+  source_name_part = TaskList
+build obj/skia/skia_graphite_private/UploadTask.o: cxx ../../third_party/skia/src/gpu/graphite/task/UploadTask.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = UploadTask.cpp
+  source_name_part = UploadTask
+build obj/skia/skia_graphite_private/TextAtlasManager.o: cxx ../../third_party/skia/src/gpu/graphite/text/TextAtlasManager.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = TextAtlasManager.cpp
+  source_name_part = TextAtlasManager
+build obj/skia/skia_graphite_private/DawnAsyncWait.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnAsyncWait.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnAsyncWait.cpp
+  source_name_part = DawnAsyncWait
+build obj/skia/skia_graphite_private/DawnBuffer.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnBuffer.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnBuffer.cpp
+  source_name_part = DawnBuffer
+build obj/skia/skia_graphite_private/DawnCaps.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnCaps.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnCaps.cpp
+  source_name_part = DawnCaps
+build obj/skia/skia_graphite_private/DawnCommandBuffer.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnCommandBuffer.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnCommandBuffer.cpp
+  source_name_part = DawnCommandBuffer
+build obj/skia/skia_graphite_private/DawnComputePipeline.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnComputePipeline.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnComputePipeline.cpp
+  source_name_part = DawnComputePipeline
+build obj/skia/skia_graphite_private/DawnErrorChecker.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnErrorChecker.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnErrorChecker.cpp
+  source_name_part = DawnErrorChecker
+build obj/skia/skia_graphite_private/DawnGraphicsPipeline.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnGraphicsPipeline.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnGraphicsPipeline.cpp
+  source_name_part = DawnGraphicsPipeline
+build obj/skia/skia_graphite_private/DawnGraphiteUtils.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnGraphiteUtils.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnGraphiteUtils.cpp
+  source_name_part = DawnGraphiteUtils
+build obj/skia/skia_graphite_private/DawnQueueManager.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnQueueManager.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnQueueManager.cpp
+  source_name_part = DawnQueueManager
+build obj/skia/skia_graphite_private/DawnResourceProvider.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnResourceProvider.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnResourceProvider.cpp
+  source_name_part = DawnResourceProvider
+build obj/skia/skia_graphite_private/DawnSampler.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnSampler.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnSampler.cpp
+  source_name_part = DawnSampler
+build obj/skia/skia_graphite_private/DawnSharedContext.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnSharedContext.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnSharedContext.cpp
+  source_name_part = DawnSharedContext
+build obj/skia/skia_graphite_private/DawnTexture.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnTexture.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnTexture.cpp
+  source_name_part = DawnTexture
+build obj/skia/skia_graphite_private/DawnTypesPriv.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnTypesPriv.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnTypesPriv.cpp
+  source_name_part = DawnTypesPriv
+build obj/skia/skia_graphite_private/DawnUtils.o: cxx ../../third_party/skia/src/gpu/graphite/dawn/DawnUtils.cpp || obj/skia/skia_graphite_private.inputdeps.stamp
+  source_file_part = DawnUtils.cpp
+  source_name_part = DawnUtils
+
+build obj/skia/skia_graphite_private.stamp: stamp obj/skia/skia_graphite_private/AtlasProvider.o obj/skia/skia_graphite_private/BackendSemaphore.o obj/skia/skia_graphite_private/BackendTexture.o obj/skia/skia_graphite_private/Buffer.o obj/skia/skia_graphite_private/BufferManager.o obj/skia/skia_graphite_private/Caps.o obj/skia/skia_graphite_private/ClientMappedBufferManager.o obj/skia/skia_graphite_private/ClipStack_graphite.o obj/skia/skia_graphite_private/CommandBuffer.o obj/skia/skia_graphite_private/ComputePipeline.o obj/skia/skia_graphite_private/Context.o obj/skia/skia_graphite_private/ContextUtils.o obj/skia/skia_graphite_private/Device.o obj/skia/skia_graphite_private/DrawAtlas.o obj/skia/skia_graphite_private/DrawContext.o obj/skia/skia_graphite_private/DrawList.o obj/skia/skia_graphite_private/DrawPass.o obj/skia/skia_graphite_private/DrawWriter.o obj/skia/skia_graphite_private/GlobalCache.o obj/skia/skia_graphite_private/GpuWorkSubmission.o obj/skia/skia_graphite_private/GraphicsPipeline.o obj/skia/skia_graphite_private/GraphiteResourceKey.o obj/skia/skia_graphite_private/ImageFactories.o obj/skia/skia_graphite_private/Image_Base_Graphite.o obj/skia/skia_graphite_private/Image_Graphite.o obj/skia/skia_graphite_private/Image_YUVA_Graphite.o obj/skia/skia_graphite_private/KeyContext.o obj/skia/skia_graphite_private/KeyHelpers.o obj/skia/skia_graphite_private/PaintParams.o obj/skia/skia_graphite_private/PaintParamsKey.o obj/skia/skia_graphite_private/PathAtlas.o obj/skia/skia_graphite_private/PipelineData.o obj/skia/skia_graphite_private/ProxyCache.o obj/skia/skia_graphite_private/QueueManager.o obj/skia/skia_graphite_private/RasterPathAtlas.o obj/skia/skia_graphite_private/RasterPathUtils.o obj/skia/skia_graphite_private/Recorder.o obj/skia/skia_graphite_private/Recording.o obj/skia/skia_graphite_private/Renderer.o obj/skia/skia_graphite_private/RendererProvider.o obj/skia/skia_graphite_private/Resource.o obj/skia/skia_graphite_private/ResourceCache.o obj/skia/skia_graphite_private/ResourceProvider.o obj/skia/skia_graphite_private/RuntimeEffectDictionary.o obj/skia/skia_graphite_private/Sampler.o obj/skia/skia_graphite_private/ShaderCodeDictionary.o obj/skia/skia_graphite_private/SharedContext.o obj/skia/skia_graphite_private/SpecialImage_Graphite.o obj/skia/skia_graphite_private/Surface_Graphite.o obj/skia/skia_graphite_private/Texture.o obj/skia/skia_graphite_private/TextureInfo.o obj/skia/skia_graphite_private/TextureProxy.o obj/skia/skia_graphite_private/TextureUtils.o obj/skia/skia_graphite_private/UniformManager.o obj/skia/skia_graphite_private/UploadBufferManager.o obj/skia/skia_graphite_private/YUVABackendTextures.o obj/skia/skia_graphite_private/YUVATextureProxies.o obj/skia/skia_graphite_private/ComputeStep.o obj/skia/skia_graphite_private/DispatchGroup.o obj/skia/skia_graphite_private/IntersectionTree.o obj/skia/skia_graphite_private/Shape.o obj/skia/skia_graphite_private/Transform.o obj/skia/skia_graphite_private/AnalyticRRectRenderStep.o obj/skia/skia_graphite_private/BitmapTextRenderStep.o obj/skia/skia_graphite_private/CoverBoundsRenderStep.o obj/skia/skia_graphite_private/CoverageMaskRenderStep.o obj/skia/skia_graphite_private/GraphiteVertexFiller.o obj/skia/skia_graphite_private/MiddleOutFanRenderStep.o obj/skia/skia_graphite_private/PerEdgeAAQuadRenderStep.o obj/skia/skia_graphite_private/SDFTextRenderStep.o obj/skia/skia_graphite_private/TessellateCurvesRenderStep.o obj/skia/skia_graphite_private/TessellateStrokesRenderStep.o obj/skia/skia_graphite_private/TessellateWedgesRenderStep.o obj/skia/skia_graphite_private/VerticesRenderStep.o obj/skia/skia_graphite_private/ClearBuffersTask.o obj/skia/skia_graphite_private/ComputeTask.o obj/skia/skia_graphite_private/CopyTask.o obj/skia/skia_graphite_private/DrawTask.o obj/skia/skia_graphite_private/RenderPassTask.o obj/skia/skia_graphite_private/SynchronizeToCpuTask.o obj/skia/skia_graphite_private/TaskList.o obj/skia/skia_graphite_private/UploadTask.o obj/skia/skia_graphite_private/TextAtlasManager.o obj/skia/skia_graphite_private/DawnAsyncWait.o obj/skia/skia_graphite_private/DawnBuffer.o obj/skia/skia_graphite_private/DawnCaps.o obj/skia/skia_graphite_private/DawnCommandBuffer.o obj/skia/skia_graphite_private/DawnComputePipeline.o obj/skia/skia_graphite_private/DawnErrorChecker.o obj/skia/skia_graphite_private/DawnGraphicsPipeline.o obj/skia/skia_graphite_private/DawnGraphiteUtils.o obj/skia/skia_graphite_private/DawnQueueManager.o obj/skia/skia_graphite_private/DawnResourceProvider.o obj/skia/skia_graphite_private/DawnSampler.o obj/skia/skia_graphite_private/DawnSharedContext.o obj/skia/skia_graphite_private/DawnTexture.o obj/skia/skia_graphite_private/DawnTypesPriv.o obj/skia/skia_graphite_private/DawnUtils.o || obj/gpu/config/workaround_list.stamp obj/third_party/dawn/include/dawn/cpp_headers.stamp obj/third_party/dawn/include/dawn/headers.stamp

@@ -1,0 +1,163 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE -DCR_CLANG_REVISION=\"llvmorg-19-init-6501-g5b544b51-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=6ddb5cb9499f29383155d7ce6b31f7d1102e6ed9 -DCR_SYSROOT_KEY=20230611T210420Z-2 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DXNN_ENABLE_JIT=0 -DXNN_ENABLE_AVX512AMX=0 -DXNN_ENABLE_ASSEMBLY=1 -DXNN_ENABLE_GEMM_M_SPECIALIZATION=1 -DXNN_ENABLE_MEMOPT=1 -DXNN_ENABLE_CPUINFO=1 -DXNN_ENABLE_SPARSE=1 -DXNN_LOG_LEVEL=0 -DXNN_LOG_TO_STDIO=0 -DPTHREADPOOL_USE_GCD=0
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/pthreadpool/src/include -I../../third_party/xnnpack/src/deps/clog/include -I../../third_party/xnnpack/src/include -I../../third_party/xnnpack/src/src -I../../third_party/cpuinfo/src/include -I../../third_party/cpuinfo/src/src -I../../third_party/cpuinfo/src/deps/clog/include -I../../third_party/fp16/src/include -I../../third_party/fxdiv/src/include -I../../third_party/pthreadpool/src/src
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -mllvm -split-threshold-for-reg-with-hint=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-allow-auto-typedefs-better-nested -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-to-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang disable-check-raw-ptr-to-stack-allocated-error -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=tools/ -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=/third_party/dawn/ -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-fields -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ref-fields -Xclang -add-plugin -Xclang unsafe-buffers -Xclang -plugin-arg-unsafe-buffers -Xclang ../../build/config/unsafe_buffers_paths.txt -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wno-cast-function-type -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-invalid-offsetof -Wno-vla-extension -Wno-thread-safety-reference-return -Werror -Wno-unused-function -Wno-deprecated-comma-subscript
+cflags_c = -std=c11 --sysroot=../../build/linux/debian_bullseye_amd64-sysroot
+label_name = subgraph_x64_standalone
+target_out_dir = obj/third_party/xnnpack
+target_output_name = subgraph_x64_standalone
+
+build obj/third_party/xnnpack/subgraph_x64_standalone/abs.o: cc ../../third_party/xnnpack/src/src/subgraph/abs.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = abs.c
+  source_name_part = abs
+build obj/third_party/xnnpack/subgraph_x64_standalone/add2.o: cc ../../third_party/xnnpack/src/src/subgraph/add2.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = add2.c
+  source_name_part = add2
+build obj/third_party/xnnpack/subgraph_x64_standalone/argmax-pooling-2d.o: cc ../../third_party/xnnpack/src/src/subgraph/argmax-pooling-2d.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = argmax-pooling-2d.c
+  source_name_part = argmax-pooling-2d
+build obj/third_party/xnnpack/subgraph_x64_standalone/average-pooling-2d.o: cc ../../third_party/xnnpack/src/src/subgraph/average-pooling-2d.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = average-pooling-2d.c
+  source_name_part = average-pooling-2d
+build obj/third_party/xnnpack/subgraph_x64_standalone/bankers-rounding.o: cc ../../third_party/xnnpack/src/src/subgraph/bankers-rounding.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = bankers-rounding.c
+  source_name_part = bankers-rounding
+build obj/third_party/xnnpack/subgraph_x64_standalone/batch-matrix-multiply.o: cc ../../third_party/xnnpack/src/src/subgraph/batch-matrix-multiply.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = batch-matrix-multiply.c
+  source_name_part = batch-matrix-multiply
+build obj/third_party/xnnpack/subgraph_x64_standalone/ceiling.o: cc ../../third_party/xnnpack/src/src/subgraph/ceiling.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = ceiling.c
+  source_name_part = ceiling
+build obj/third_party/xnnpack/subgraph_x64_standalone/clamp.o: cc ../../third_party/xnnpack/src/src/subgraph/clamp.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = clamp.c
+  source_name_part = clamp
+build obj/third_party/xnnpack/subgraph_x64_standalone/concatenate.o: cc ../../third_party/xnnpack/src/src/subgraph/concatenate.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = concatenate.c
+  source_name_part = concatenate
+build obj/third_party/xnnpack/subgraph_x64_standalone/convert.o: cc ../../third_party/xnnpack/src/src/subgraph/convert.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = convert.c
+  source_name_part = convert
+build obj/third_party/xnnpack/subgraph_x64_standalone/convolution-2d.o: cc ../../third_party/xnnpack/src/src/subgraph/convolution-2d.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = convolution-2d.c
+  source_name_part = convolution-2d
+build obj/third_party/xnnpack/subgraph_x64_standalone/copy.o: cc ../../third_party/xnnpack/src/src/subgraph/copy.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = copy.c
+  source_name_part = copy
+build obj/third_party/xnnpack/subgraph_x64_standalone/deconvolution-2d.o: cc ../../third_party/xnnpack/src/src/subgraph/deconvolution-2d.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = deconvolution-2d.c
+  source_name_part = deconvolution-2d
+build obj/third_party/xnnpack/subgraph_x64_standalone/depth-to-space-2d.o: cc ../../third_party/xnnpack/src/src/subgraph/depth-to-space-2d.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = depth-to-space-2d.c
+  source_name_part = depth-to-space-2d
+build obj/third_party/xnnpack/subgraph_x64_standalone/depthwise-convolution-2d.o: cc ../../third_party/xnnpack/src/src/subgraph/depthwise-convolution-2d.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = depthwise-convolution-2d.c
+  source_name_part = depthwise-convolution-2d
+build obj/third_party/xnnpack/subgraph_x64_standalone/divide.o: cc ../../third_party/xnnpack/src/src/subgraph/divide.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = divide.c
+  source_name_part = divide
+build obj/third_party/xnnpack/subgraph_x64_standalone/elu.o: cc ../../third_party/xnnpack/src/src/subgraph/elu.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = elu.c
+  source_name_part = elu
+build obj/third_party/xnnpack/subgraph_x64_standalone/even-split.o: cc ../../third_party/xnnpack/src/src/subgraph/even-split.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = even-split.c
+  source_name_part = even-split
+build obj/third_party/xnnpack/subgraph_x64_standalone/floor.o: cc ../../third_party/xnnpack/src/src/subgraph/floor.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = floor.c
+  source_name_part = floor
+build obj/third_party/xnnpack/subgraph_x64_standalone/fully-connected-sparse.o: cc ../../third_party/xnnpack/src/src/subgraph/fully-connected-sparse.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = fully-connected-sparse.c
+  source_name_part = fully-connected-sparse
+build obj/third_party/xnnpack/subgraph_x64_standalone/fully-connected.o: cc ../../third_party/xnnpack/src/src/subgraph/fully-connected.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = fully-connected.c
+  source_name_part = fully-connected
+build obj/third_party/xnnpack/subgraph_x64_standalone/global-average-pooling.o: cc ../../third_party/xnnpack/src/src/subgraph/global-average-pooling.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = global-average-pooling.c
+  source_name_part = global-average-pooling
+build obj/third_party/xnnpack/subgraph_x64_standalone/global-sum-pooling.o: cc ../../third_party/xnnpack/src/src/subgraph/global-sum-pooling.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = global-sum-pooling.c
+  source_name_part = global-sum-pooling
+build obj/third_party/xnnpack/subgraph_x64_standalone/hardswish.o: cc ../../third_party/xnnpack/src/src/subgraph/hardswish.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = hardswish.c
+  source_name_part = hardswish
+build obj/third_party/xnnpack/subgraph_x64_standalone/leaky-relu.o: cc ../../third_party/xnnpack/src/src/subgraph/leaky-relu.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = leaky-relu.c
+  source_name_part = leaky-relu
+build obj/third_party/xnnpack/subgraph_x64_standalone/max-pooling-2d.o: cc ../../third_party/xnnpack/src/src/subgraph/max-pooling-2d.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = max-pooling-2d.c
+  source_name_part = max-pooling-2d
+build obj/third_party/xnnpack/subgraph_x64_standalone/maximum2.o: cc ../../third_party/xnnpack/src/src/subgraph/maximum2.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = maximum2.c
+  source_name_part = maximum2
+build obj/third_party/xnnpack/subgraph_x64_standalone/minimum2.o: cc ../../third_party/xnnpack/src/src/subgraph/minimum2.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = minimum2.c
+  source_name_part = minimum2
+build obj/third_party/xnnpack/subgraph_x64_standalone/multiply2.o: cc ../../third_party/xnnpack/src/src/subgraph/multiply2.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = multiply2.c
+  source_name_part = multiply2
+build obj/third_party/xnnpack/subgraph_x64_standalone/negate.o: cc ../../third_party/xnnpack/src/src/subgraph/negate.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = negate.c
+  source_name_part = negate
+build obj/third_party/xnnpack/subgraph_x64_standalone/prelu.o: cc ../../third_party/xnnpack/src/src/subgraph/prelu.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = prelu.c
+  source_name_part = prelu
+build obj/third_party/xnnpack/subgraph_x64_standalone/reshape-2d.o: cc ../../third_party/xnnpack/src/src/subgraph/reshape-2d.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = reshape-2d.c
+  source_name_part = reshape-2d
+build obj/third_party/xnnpack/subgraph_x64_standalone/reshape-helpers.o: cc ../../third_party/xnnpack/src/src/subgraph/reshape-helpers.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = reshape-helpers.c
+  source_name_part = reshape-helpers
+build obj/third_party/xnnpack/subgraph_x64_standalone/rope.o: cc ../../third_party/xnnpack/src/src/subgraph/rope.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = rope.c
+  source_name_part = rope
+build obj/third_party/xnnpack/subgraph_x64_standalone/scaled-dot-product-attention.o: cc ../../third_party/xnnpack/src/src/subgraph/scaled-dot-product-attention.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = scaled-dot-product-attention.c
+  source_name_part = scaled-dot-product-attention
+build obj/third_party/xnnpack/subgraph_x64_standalone/sigmoid.o: cc ../../third_party/xnnpack/src/src/subgraph/sigmoid.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = sigmoid.c
+  source_name_part = sigmoid
+build obj/third_party/xnnpack/subgraph_x64_standalone/softmax.o: cc ../../third_party/xnnpack/src/src/subgraph/softmax.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = softmax.c
+  source_name_part = softmax
+build obj/third_party/xnnpack/subgraph_x64_standalone/space-to-depth-2d.o: cc ../../third_party/xnnpack/src/src/subgraph/space-to-depth-2d.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = space-to-depth-2d.c
+  source_name_part = space-to-depth-2d
+build obj/third_party/xnnpack/subgraph_x64_standalone/square-root.o: cc ../../third_party/xnnpack/src/src/subgraph/square-root.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = square-root.c
+  source_name_part = square-root
+build obj/third_party/xnnpack/subgraph_x64_standalone/square.o: cc ../../third_party/xnnpack/src/src/subgraph/square.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = square.c
+  source_name_part = square
+build obj/third_party/xnnpack/subgraph_x64_standalone/squared-difference.o: cc ../../third_party/xnnpack/src/src/subgraph/squared-difference.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = squared-difference.c
+  source_name_part = squared-difference
+build obj/third_party/xnnpack/subgraph_x64_standalone/static-constant-pad.o: cc ../../third_party/xnnpack/src/src/subgraph/static-constant-pad.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = static-constant-pad.c
+  source_name_part = static-constant-pad
+build obj/third_party/xnnpack/subgraph_x64_standalone/static-mean.o: cc ../../third_party/xnnpack/src/src/subgraph/static-mean.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = static-mean.c
+  source_name_part = static-mean
+build obj/third_party/xnnpack/subgraph_x64_standalone/static-reshape.o: cc ../../third_party/xnnpack/src/src/subgraph/static-reshape.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = static-reshape.c
+  source_name_part = static-reshape
+build obj/third_party/xnnpack/subgraph_x64_standalone/static-resize-bilinear-2d.o: cc ../../third_party/xnnpack/src/src/subgraph/static-resize-bilinear-2d.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = static-resize-bilinear-2d.c
+  source_name_part = static-resize-bilinear-2d
+build obj/third_party/xnnpack/subgraph_x64_standalone/static-slice.o: cc ../../third_party/xnnpack/src/src/subgraph/static-slice.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = static-slice.c
+  source_name_part = static-slice
+build obj/third_party/xnnpack/subgraph_x64_standalone/static-transpose.o: cc ../../third_party/xnnpack/src/src/subgraph/static-transpose.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = static-transpose.c
+  source_name_part = static-transpose
+build obj/third_party/xnnpack/subgraph_x64_standalone/subtract.o: cc ../../third_party/xnnpack/src/src/subgraph/subtract.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = subtract.c
+  source_name_part = subtract
+build obj/third_party/xnnpack/subgraph_x64_standalone/tanh.o: cc ../../third_party/xnnpack/src/src/subgraph/tanh.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = tanh.c
+  source_name_part = tanh
+build obj/third_party/xnnpack/subgraph_x64_standalone/unpooling-2d.o: cc ../../third_party/xnnpack/src/src/subgraph/unpooling-2d.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = unpooling-2d.c
+  source_name_part = unpooling-2d
+build obj/third_party/xnnpack/subgraph_x64_standalone/validation.o: cc ../../third_party/xnnpack/src/src/subgraph/validation.c | ../../build/config/unsafe_buffers_paths.txt
+  source_file_part = validation.c
+  source_name_part = validation
+
+build obj/third_party/xnnpack/subgraph_x64_standalone.stamp: stamp obj/third_party/xnnpack/subgraph_x64_standalone/abs.o obj/third_party/xnnpack/subgraph_x64_standalone/add2.o obj/third_party/xnnpack/subgraph_x64_standalone/argmax-pooling-2d.o obj/third_party/xnnpack/subgraph_x64_standalone/average-pooling-2d.o obj/third_party/xnnpack/subgraph_x64_standalone/bankers-rounding.o obj/third_party/xnnpack/subgraph_x64_standalone/batch-matrix-multiply.o obj/third_party/xnnpack/subgraph_x64_standalone/ceiling.o obj/third_party/xnnpack/subgraph_x64_standalone/clamp.o obj/third_party/xnnpack/subgraph_x64_standalone/concatenate.o obj/third_party/xnnpack/subgraph_x64_standalone/convert.o obj/third_party/xnnpack/subgraph_x64_standalone/convolution-2d.o obj/third_party/xnnpack/subgraph_x64_standalone/copy.o obj/third_party/xnnpack/subgraph_x64_standalone/deconvolution-2d.o obj/third_party/xnnpack/subgraph_x64_standalone/depth-to-space-2d.o obj/third_party/xnnpack/subgraph_x64_standalone/depthwise-convolution-2d.o obj/third_party/xnnpack/subgraph_x64_standalone/divide.o obj/third_party/xnnpack/subgraph_x64_standalone/elu.o obj/third_party/xnnpack/subgraph_x64_standalone/even-split.o obj/third_party/xnnpack/subgraph_x64_standalone/floor.o obj/third_party/xnnpack/subgraph_x64_standalone/fully-connected-sparse.o obj/third_party/xnnpack/subgraph_x64_standalone/fully-connected.o obj/third_party/xnnpack/subgraph_x64_standalone/global-average-pooling.o obj/third_party/xnnpack/subgraph_x64_standalone/global-sum-pooling.o obj/third_party/xnnpack/subgraph_x64_standalone/hardswish.o obj/third_party/xnnpack/subgraph_x64_standalone/leaky-relu.o obj/third_party/xnnpack/subgraph_x64_standalone/max-pooling-2d.o obj/third_party/xnnpack/subgraph_x64_standalone/maximum2.o obj/third_party/xnnpack/subgraph_x64_standalone/minimum2.o obj/third_party/xnnpack/subgraph_x64_standalone/multiply2.o obj/third_party/xnnpack/subgraph_x64_standalone/negate.o obj/third_party/xnnpack/subgraph_x64_standalone/prelu.o obj/third_party/xnnpack/subgraph_x64_standalone/reshape-2d.o obj/third_party/xnnpack/subgraph_x64_standalone/reshape-helpers.o obj/third_party/xnnpack/subgraph_x64_standalone/rope.o obj/third_party/xnnpack/subgraph_x64_standalone/scaled-dot-product-attention.o obj/third_party/xnnpack/subgraph_x64_standalone/sigmoid.o obj/third_party/xnnpack/subgraph_x64_standalone/softmax.o obj/third_party/xnnpack/subgraph_x64_standalone/space-to-depth-2d.o obj/third_party/xnnpack/subgraph_x64_standalone/square-root.o obj/third_party/xnnpack/subgraph_x64_standalone/square.o obj/third_party/xnnpack/subgraph_x64_standalone/squared-difference.o obj/third_party/xnnpack/subgraph_x64_standalone/static-constant-pad.o obj/third_party/xnnpack/subgraph_x64_standalone/static-mean.o obj/third_party/xnnpack/subgraph_x64_standalone/static-reshape.o obj/third_party/xnnpack/subgraph_x64_standalone/static-resize-bilinear-2d.o obj/third_party/xnnpack/subgraph_x64_standalone/static-slice.o obj/third_party/xnnpack/subgraph_x64_standalone/static-transpose.o obj/third_party/xnnpack/subgraph_x64_standalone/subtract.o obj/third_party/xnnpack/subgraph_x64_standalone/tanh.o obj/third_party/xnnpack/subgraph_x64_standalone/unpooling-2d.o obj/third_party/xnnpack/subgraph_x64_standalone/validation.o || ./libcpuinfo.so.TOC obj/third_party/fp16/fp16.stamp obj/third_party/fxdiv/fxdiv.stamp obj/third_party/pthreadpool/pthreadpool_standalone.stamp

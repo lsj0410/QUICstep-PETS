@@ -1,0 +1,158 @@
+defines = -D_FILE_OFFSET_BITS=64 -DLARGEFILE_SOURCE -DRAR_SMP -DSILENT -DNOVOLUME -DCHROMIUM_UNRAR -DUNRAR_NO_EXCEPTIONS -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE -DCR_CLANG_REVISION=\"llvmorg-19-init-6501-g5b544b51-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=6ddb5cb9499f29383155d7ce6b31f7d1102e6ed9 -DCR_SYSROOT_KEY=20230611T210420Z-2 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGLIB_VERSION_MAX_ALLOWED=GLIB_VERSION_2_56 -DGLIB_VERSION_MIN_REQUIRED=GLIB_VERSION_2_56 -DBASE_USE_PERFETTO_CLIENT_LIBRARY=1 -DABSL_CONSUME_DLL -DABSL_FLAGS_STRIP_NAMES=0 -DBORINGSSL_SHARED_LIBRARY
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/perfetto/include -Igen/third_party/perfetto/build_config -Igen/third_party/perfetto -I../../base/allocator/partition_allocator/src -Igen/base/allocator/partition_allocator/src -I../../third_party/abseil-cpp -I../../third_party/boringssl/src/include -I../../third_party/protobuf/src -Igen/protoc_out
+cflags = -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -mllvm -split-threshold-for-reg-with-hint=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-allow-auto-typedefs-better-nested -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-to-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang disable-check-raw-ptr-to-stack-allocated-error -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=tools/ -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=/third_party/dawn/ -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-fields -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ref-fields -Xclang -add-plugin -Xclang unsafe-buffers -Xclang -plugin-arg-unsafe-buffers -Xclang ../../build/config/unsafe_buffers_paths.txt -Wall -Wno-unused-variable -Wno-c++11-narrowing -Wno-unused-but-set-variable -Wno-misleading-indentation -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wno-cast-function-type -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-invalid-offsetof -Wno-vla-extension -Wno-thread-safety-reference-return -Werror -Wno-logical-op-parentheses -Wno-dangling-else -Wno-switch -Wno-unused-function -Wno-missing-braces -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/include/glib-2.0 -isystem../../build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu/glib-2.0/include -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../third_party/libc++/src/include -isystem../../third_party/libc++abi/src/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden -Wenum-compare-conditional -Wno-c++11-narrowing-const-reference
+label_name = unrar
+target_out_dir = obj/third_party/unrar
+target_output_name = libunrar
+
+build obj/third_party/unrar/unrar.inputdeps.stamp: stamp obj/base/anchor_functions_buildflags.stamp obj/base/build_date.stamp obj/base/cfi_buildflags.stamp obj/base/check_version_internal_action.stamp obj/base/clang_profiling_buildflags.stamp obj/base/debugging_buildflags.stamp obj/base/feature_list_buildflags.stamp obj/base/fuzzing_buildflags.stamp obj/base/ios_cronet_buildflags.stamp obj/base/logging_buildflags.stamp obj/base/message_pump_buildflags.stamp obj/base/orderfile_buildflags.stamp obj/base/power_monitor_buildflags.stamp obj/base/profiler_buildflags.stamp obj/base/protected_memory_buildflags.stamp obj/base/rust_buildflags.stamp obj/base/sanitizer_buildflags.stamp obj/base/synchronization_buildflags.stamp obj/base/tracing_buildflags.stamp obj/base/allocator/buildflags.stamp obj/base/allocator/partition_allocator/src/partition_alloc/chromecast_buildflags.stamp obj/base/allocator/partition_allocator/src/partition_alloc/chromeos_buildflags.stamp obj/base/allocator/partition_allocator/src/partition_alloc/debugging_buildflags.stamp obj/base/allocator/partition_allocator/src/partition_alloc/partition_alloc_buildflags.stamp obj/base/allocator/partition_allocator/src/partition_alloc/raw_ptr_buildflags.stamp obj/base/tracing/protos/chrome_track_event_gen.stamp obj/base/tracing/protos/chrome_track_event_zero_gen.stamp obj/build/blink_buildflags.stamp obj/build/branding_buildflags.stamp obj/build/chromecast_buildflags.stamp obj/build/chromeos_buildflags.stamp obj/build/ios_buildflags.stamp obj/build/config/compiler/compiler_buildflags.stamp obj/build/rust/std/empty_sysroot_for_std_build.stamp clang_x64_for_rust_host_build_tools/obj/build/rust/std/prebuilt_rustc_copy_to_sysroot.stamp obj/build/rust/std/rules/compiler_builtins_compiler_builtins_vunknown_build_script_output.stamp obj/build/rust/std/rules/libc_libc_vunknown_build_script_output.stamp obj/build/rust/std/rules/memchr_memchr_vunknown_build_script_output.stamp obj/build/rust/std/rules/std_std_vunknown_build_script_output.stamp obj/third_party/icu/copy_icudata.stamp obj/third_party/perfetto/gn/gen_buildflags.stamp obj/third_party/perfetto/protos/perfetto/common/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/common/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/inode_file/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/interceptors/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/process_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/config/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/ipc_gen.stamp obj/third_party/perfetto/protos/perfetto/ipc/wire_protocol_cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/non_minimal_zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/android/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/chrome/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/etw/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/filesystem/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ftrace/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/gpu/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/interned_data/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/perfetto/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/power/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/profiling/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/ps/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/statsd/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/sys_stats/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/system_info/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/cpp_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/track_event/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace/translation/zero_gen.stamp obj/third_party/perfetto/protos/perfetto/trace_processor/zero_gen.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_chrome_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/importers/proto/gen_cc_track_event_descriptor.stamp obj/third_party/perfetto/src/trace_processor/tables/tables_python.stamp clang_x64_for_rust_host_build_tools/obj/third_party/rust/proc_macro2/v1/proc_macro2_lib_v1_build_script_output.stamp
+build obj/third_party/unrar/unrar/unrar_wrapper.o: cxx ../../third_party/unrar/google/unrar_wrapper.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = unrar_wrapper.cc
+  source_name_part = unrar_wrapper
+build obj/third_party/unrar/unrar/archive.o: cxx ../../third_party/unrar/src/archive.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = archive.cpp
+  source_name_part = archive
+build obj/third_party/unrar/unrar/arcread.o: cxx ../../third_party/unrar/src/arcread.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = arcread.cpp
+  source_name_part = arcread
+build obj/third_party/unrar/unrar/blake2s.o: cxx ../../third_party/unrar/src/blake2s.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = blake2s.cpp
+  source_name_part = blake2s
+build obj/third_party/unrar/unrar/cmddata.o: cxx ../../third_party/unrar/src/cmddata.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = cmddata.cpp
+  source_name_part = cmddata
+build obj/third_party/unrar/unrar/consio.o: cxx ../../third_party/unrar/src/consio.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = consio.cpp
+  source_name_part = consio
+build obj/third_party/unrar/unrar/crc.o: cxx ../../third_party/unrar/src/crc.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = crc.cpp
+  source_name_part = crc
+build obj/third_party/unrar/unrar/crypt.o: cxx ../../third_party/unrar/src/crypt.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = crypt.cpp
+  source_name_part = crypt
+build obj/third_party/unrar/unrar/encname.o: cxx ../../third_party/unrar/src/encname.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = encname.cpp
+  source_name_part = encname
+build obj/third_party/unrar/unrar/errhnd.o: cxx ../../third_party/unrar/src/errhnd.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = errhnd.cpp
+  source_name_part = errhnd
+build obj/third_party/unrar/unrar/extinfo.o: cxx ../../third_party/unrar/src/extinfo.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = extinfo.cpp
+  source_name_part = extinfo
+build obj/third_party/unrar/unrar/extract.o: cxx ../../third_party/unrar/src/extract.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = extract.cpp
+  source_name_part = extract
+build obj/third_party/unrar/unrar/filcreat.o: cxx ../../third_party/unrar/src/filcreat.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = filcreat.cpp
+  source_name_part = filcreat
+build obj/third_party/unrar/unrar/file.o: cxx ../../third_party/unrar/src/file.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = file.cpp
+  source_name_part = file
+build obj/third_party/unrar/unrar/filefn.o: cxx ../../third_party/unrar/src/filefn.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = filefn.cpp
+  source_name_part = filefn
+build obj/third_party/unrar/unrar/filestr.o: cxx ../../third_party/unrar/src/filestr.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = filestr.cpp
+  source_name_part = filestr
+build obj/third_party/unrar/unrar/find.o: cxx ../../third_party/unrar/src/find.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = find.cpp
+  source_name_part = find
+build obj/third_party/unrar/unrar/getbits.o: cxx ../../third_party/unrar/src/getbits.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = getbits.cpp
+  source_name_part = getbits
+build obj/third_party/unrar/unrar/global.o: cxx ../../third_party/unrar/src/global.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = global.cpp
+  source_name_part = global
+build obj/third_party/unrar/unrar/hash.o: cxx ../../third_party/unrar/src/hash.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = hash.cpp
+  source_name_part = hash
+build obj/third_party/unrar/unrar/headers.o: cxx ../../third_party/unrar/src/headers.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = headers.cpp
+  source_name_part = headers
+build obj/third_party/unrar/unrar/list.o: cxx ../../third_party/unrar/src/list.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = list.cpp
+  source_name_part = list
+build obj/third_party/unrar/unrar/match.o: cxx ../../third_party/unrar/src/match.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = match.cpp
+  source_name_part = match
+build obj/third_party/unrar/unrar/options.o: cxx ../../third_party/unrar/src/options.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = options.cpp
+  source_name_part = options
+build obj/third_party/unrar/unrar/pathfn.o: cxx ../../third_party/unrar/src/pathfn.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = pathfn.cpp
+  source_name_part = pathfn
+build obj/third_party/unrar/unrar/qopen.o: cxx ../../third_party/unrar/src/qopen.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = qopen.cpp
+  source_name_part = qopen
+build obj/third_party/unrar/unrar/rarvm.o: cxx ../../third_party/unrar/src/rarvm.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = rarvm.cpp
+  source_name_part = rarvm
+build obj/third_party/unrar/unrar/rawread.o: cxx ../../third_party/unrar/src/rawread.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = rawread.cpp
+  source_name_part = rawread
+build obj/third_party/unrar/unrar/rdwrfn.o: cxx ../../third_party/unrar/src/rdwrfn.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = rdwrfn.cpp
+  source_name_part = rdwrfn
+build obj/third_party/unrar/unrar/recvol.o: cxx ../../third_party/unrar/src/recvol.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = recvol.cpp
+  source_name_part = recvol
+build obj/third_party/unrar/unrar/resource.o: cxx ../../third_party/unrar/src/resource.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = resource.cpp
+  source_name_part = resource
+build obj/third_party/unrar/unrar/rijndael.o: cxx ../../third_party/unrar/src/rijndael.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = rijndael.cpp
+  source_name_part = rijndael
+build obj/third_party/unrar/unrar/rs.o: cxx ../../third_party/unrar/src/rs.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = rs.cpp
+  source_name_part = rs
+build obj/third_party/unrar/unrar/rs16.o: cxx ../../third_party/unrar/src/rs16.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = rs16.cpp
+  source_name_part = rs16
+build obj/third_party/unrar/unrar/scantree.o: cxx ../../third_party/unrar/src/scantree.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = scantree.cpp
+  source_name_part = scantree
+build obj/third_party/unrar/unrar/secpassword.o: cxx ../../third_party/unrar/src/secpassword.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = secpassword.cpp
+  source_name_part = secpassword
+build obj/third_party/unrar/unrar/sha1.o: cxx ../../third_party/unrar/src/sha1.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = sha1.cpp
+  source_name_part = sha1
+build obj/third_party/unrar/unrar/sha256.o: cxx ../../third_party/unrar/src/sha256.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = sha256.cpp
+  source_name_part = sha256
+build obj/third_party/unrar/unrar/smallfn.o: cxx ../../third_party/unrar/src/smallfn.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = smallfn.cpp
+  source_name_part = smallfn
+build obj/third_party/unrar/unrar/strfn.o: cxx ../../third_party/unrar/src/strfn.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = strfn.cpp
+  source_name_part = strfn
+build obj/third_party/unrar/unrar/strlist.o: cxx ../../third_party/unrar/src/strlist.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = strlist.cpp
+  source_name_part = strlist
+build obj/third_party/unrar/unrar/system.o: cxx ../../third_party/unrar/src/system.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = system.cpp
+  source_name_part = system
+build obj/third_party/unrar/unrar/threadpool.o: cxx ../../third_party/unrar/src/threadpool.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = threadpool.cpp
+  source_name_part = threadpool
+build obj/third_party/unrar/unrar/timefn.o: cxx ../../third_party/unrar/src/timefn.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = timefn.cpp
+  source_name_part = timefn
+build obj/third_party/unrar/unrar/ui.o: cxx ../../third_party/unrar/src/ui.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = ui.cpp
+  source_name_part = ui
+build obj/third_party/unrar/unrar/unicode.o: cxx ../../third_party/unrar/src/unicode.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = unicode.cpp
+  source_name_part = unicode
+build obj/third_party/unrar/unrar/unpack.o: cxx ../../third_party/unrar/src/unpack.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = unpack.cpp
+  source_name_part = unpack
+build obj/third_party/unrar/unrar/volume.o: cxx ../../third_party/unrar/src/volume.cpp | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/unrar/unrar.inputdeps.stamp
+  source_file_part = volume.cpp
+  source_name_part = volume
+
+build obj/third_party/unrar/libunrar.a: alink obj/third_party/unrar/unrar/unrar_wrapper.o obj/third_party/unrar/unrar/archive.o obj/third_party/unrar/unrar/arcread.o obj/third_party/unrar/unrar/blake2s.o obj/third_party/unrar/unrar/cmddata.o obj/third_party/unrar/unrar/consio.o obj/third_party/unrar/unrar/crc.o obj/third_party/unrar/unrar/crypt.o obj/third_party/unrar/unrar/encname.o obj/third_party/unrar/unrar/errhnd.o obj/third_party/unrar/unrar/extinfo.o obj/third_party/unrar/unrar/extract.o obj/third_party/unrar/unrar/filcreat.o obj/third_party/unrar/unrar/file.o obj/third_party/unrar/unrar/filefn.o obj/third_party/unrar/unrar/filestr.o obj/third_party/unrar/unrar/find.o obj/third_party/unrar/unrar/getbits.o obj/third_party/unrar/unrar/global.o obj/third_party/unrar/unrar/hash.o obj/third_party/unrar/unrar/headers.o obj/third_party/unrar/unrar/list.o obj/third_party/unrar/unrar/match.o obj/third_party/unrar/unrar/options.o obj/third_party/unrar/unrar/pathfn.o obj/third_party/unrar/unrar/qopen.o obj/third_party/unrar/unrar/rarvm.o obj/third_party/unrar/unrar/rawread.o obj/third_party/unrar/unrar/rdwrfn.o obj/third_party/unrar/unrar/recvol.o obj/third_party/unrar/unrar/resource.o obj/third_party/unrar/unrar/rijndael.o obj/third_party/unrar/unrar/rs.o obj/third_party/unrar/unrar/rs16.o obj/third_party/unrar/unrar/scantree.o obj/third_party/unrar/unrar/secpassword.o obj/third_party/unrar/unrar/sha1.o obj/third_party/unrar/unrar/sha256.o obj/third_party/unrar/unrar/smallfn.o obj/third_party/unrar/unrar/strfn.o obj/third_party/unrar/unrar/strlist.o obj/third_party/unrar/unrar/system.o obj/third_party/unrar/unrar/threadpool.o obj/third_party/unrar/unrar/timefn.o obj/third_party/unrar/unrar/ui.o obj/third_party/unrar/unrar/unicode.o obj/third_party/unrar/unrar/unpack.o obj/third_party/unrar/unrar/volume.o | ../../third_party/llvm-build/Release+Asserts/lib/clang/19/lib/x86_64-unknown-linux-gnu/libclang_rt.builtins.a ../../build/config/unsafe_buffers_paths.txt || ./libbase.so.TOC ./libbase_allocator_partition_allocator_src_partition_alloc_raw_ptr.so.TOC ./libbase_allocator_partition_allocator_src_partition_alloc_allocator_base.so.TOC ./libbase_allocator_partition_allocator_src_partition_alloc_allocator_core.so.TOC ./libbase_allocator_partition_allocator_src_partition_alloc_allocator_shim.so.TOC ./libthird_party_abseil-cpp_absl.so.TOC ./libthird_party_boringssl.so.TOC ./libthird_party_perfetto_libperfetto.so.TOC
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/third_party/unrar

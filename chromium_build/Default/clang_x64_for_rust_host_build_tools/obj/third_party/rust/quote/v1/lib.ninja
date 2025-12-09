@@ -1,0 +1,18 @@
+crate_name = quote
+crate_type = rlib
+output_extension = .rlib
+output_dir = clang_x64_for_rust_host_build_tools/obj/third_party/rust/quote/v1/lib
+rustflags = --cfg=feature=\"proc-macro\" -Cmetadata=quote-1 --edition=2018 -Cforce-unwind-tables=yes -Crelocation-model=pic -Coverflow-checks=on -Cdefault-linker-libraries -Zdep-info-omit-d-target -Zmacro-backtrace -Zremap-cwd-prefix=. --color=always --target=x86_64-unknown-linux-gnu -Cembed-bitcode=no -Clto=no --cfg cr_rustc_revision=\"b13a71a2e77f4625d1a2b8a5b9488414686ebca9-1-llvmorg-19-init-6501-g5b544b51\" -Copt-level=3 --cap-lints=allow -Dunsafe_op_in_unsafe_fn -Dwarnings -Aunused-imports
+rustenv = OUT_DIR=../../../../../../out/Default/clang_x64_for_rust_host_build_tools/gen/third_party/rust/quote/v1/lib CARGO_PKG_AUTHORS=David\$ Tolnay\$ \<dtolnay@gmail.com\> CARGO_PKG_VERSION=1.0.35 CARGO_PKG_NAME=quote CARGO_PKG_DESCRIPTION=Quasi-quoting\$ macro\$ quote\!\(...\) CARGO_MANIFEST_DIR=../../third_party/rust/quote/v1/lib/crate
+label_name = lib
+target_out_dir = clang_x64_for_rust_host_build_tools/obj/third_party/rust/quote/v1
+target_output_name = quote_lib
+
+build clang_x64_for_rust_host_build_tools/obj/third_party/rust/quote/v1/lib.inputdeps.stamp: clang_x64_for_rust_host_build_tools_stamp clang_x64_for_rust_host_build_tools/obj/build/rust/std/prebuilt_rustc_copy_to_sysroot.stamp clang_x64_for_rust_host_build_tools/obj/third_party/rust/proc_macro2/v1/proc_macro2_lib_v1_build_script_output.stamp
+build clang_x64_for_rust_host_build_tools/obj/third_party/rust/quote/v1/lib/libquote_lib.rlib: clang_x64_for_rust_host_build_tools_rust_rlib ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/lib.rs | ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/ext.rs ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/format.rs ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/ident_fragment.rs ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/lib.rs ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/runtime.rs ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/spanned.rs ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/to_tokens.rs clang_x64_for_rust_host_build_tools/obj/third_party/rust/proc_macro2/v1/lib/libproc_macro2_lib.rlib clang_x64_for_rust_host_build_tools/obj/third_party/rust/unicode_ident/v1/lib/libunicode_ident_lib.rlib || clang_x64_for_rust_host_build_tools/obj/third_party/rust/quote/v1/lib.inputdeps.stamp clang_x64_for_rust_host_build_tools/obj/build/rust/std/std.stamp
+  source_file_part = lib.rs
+  source_name_part = lib
+  externs = --extern proc_macro2=clang_x64_for_rust_host_build_tools/obj/third_party/rust/proc_macro2/v1/lib/libproc_macro2_lib.rlib
+  rustdeps = -Ldependency=clang_x64_for_rust_host_build_tools/obj/third_party/rust/proc_macro2/v1/lib -Ldependency=clang_x64_for_rust_host_build_tools/obj/third_party/rust/unicode_ident/v1/lib -Clink-arg=../../third_party/llvm-build/Release+Asserts/lib/clang/19/lib/x86_64-unknown-linux-gnu/libclang_rt.builtins.a
+  ldflags =
+  sources = ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/ext.rs ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/format.rs ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/ident_fragment.rs ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/lib.rs ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/runtime.rs ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/spanned.rs ../../third_party/rust/chromium_crates_io/vendor/quote-1.0.35/src/to_tokens.rs

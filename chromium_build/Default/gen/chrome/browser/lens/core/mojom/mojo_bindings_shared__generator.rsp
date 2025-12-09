@@ -1,0 +1,3 @@
+../../chrome/browser/lens/core/mojom/geometry.mojom
+../../chrome/browser/lens/core/mojom/lens.mojom
+../../chrome/browser/lens/core/mojom/text.mojom

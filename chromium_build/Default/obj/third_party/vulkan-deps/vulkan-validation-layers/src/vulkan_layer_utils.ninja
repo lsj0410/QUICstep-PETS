@@ -1,0 +1,8 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE -DCR_CLANG_REVISION=\"llvmorg-19-init-6501-g5b544b51-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=6ddb5cb9499f29383155d7ce6b31f7d1102e6ed9 -DCR_SYSROOT_KEY=20230611T210420Z-2 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DVK_ENABLE_BETA_EXTENSIONS -DVK_USE_PLATFORM_XCB_KHR -DVK_USE_PLATFORM_WAYLAND_KHR
+include_dirs = -I../../third_party/vulkan-deps/vulkan-validation-layers/src/layers -I../../third_party/vulkan-deps/vulkan-validation-layers/src/layers/external -I../../third_party/vulkan-deps/vulkan-validation-layers/src/layers/vulkan -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/vulkan-deps/vulkan-headers/src/include -I../../third_party/wayland/src/src -I../../third_party/wayland/include/src -I../../third_party/vulkan-deps/vulkan-utility-libraries/src/include
+label_name = vulkan_layer_utils
+target_out_dir = obj/third_party/vulkan-deps/vulkan-validation-layers/src
+target_output_name = vulkan_layer_utils
+
+
+build obj/third_party/vulkan-deps/vulkan-validation-layers/src/vulkan_layer_utils.stamp: stamp || obj/third_party/vulkan-deps/vulkan-headers/src/vulkan_headers.stamp obj/third_party/vulkan-deps/vulkan-utility-libraries/src/libvulkan_layer_settings.a

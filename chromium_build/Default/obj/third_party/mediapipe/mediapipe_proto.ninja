@@ -1,0 +1,157 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE -DCR_CLANG_REVISION=\"llvmorg-19-init-6501-g5b544b51-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=6ddb5cb9499f29383155d7ce6b31f7d1102e6ed9 -DCR_SYSROOT_KEY=20230611T210420Z-2 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/protobuf/src -Igen/protoc_out -Igen/third_party/mediapipe/src -Igen/third_party/mediapipe/shims/protobuf -I../../third_party/mediapipe/src -I../../third_party/mediapipe/shims -I../../third_party/mediapipe/shims/protobuf
+cflags = -Wall -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wno-cast-function-type -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-invalid-offsetof -Wno-vla-extension -Wno-thread-safety-reference-return -Wshadow -Werror -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -mllvm -split-threshold-for-reg-with-hint=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-allow-auto-typedefs-better-nested -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-to-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang disable-check-raw-ptr-to-stack-allocated-error -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=tools/ -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=/third_party/dawn/ -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-fields -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ref-fields -Xclang -add-plugin -Xclang unsafe-buffers -Xclang -plugin-arg-unsafe-buffers -Xclang ../../build/config/unsafe_buffers_paths.txt -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wenum-compare-conditional -Wno-c++11-narrowing-const-reference -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../third_party/libc++/src/include -isystem../../third_party/libc++abi/src/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = mediapipe_proto
+target_out_dir = obj/third_party/mediapipe
+target_output_name = libmediapipe_proto
+
+build obj/third_party/mediapipe/mediapipe_proto/flow_limiter_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/calculators/core/flow_limiter_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = flow_limiter_calculator.pb.cc
+  source_name_part = flow_limiter_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/split_vector_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/calculators/core/split_vector_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = split_vector_calculator.pb.cc
+  source_name_part = split_vector_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/callback_packet_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/calculators/internal/callback_packet_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = callback_packet_calculator.pb.cc
+  source_name_part = callback_packet_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/bert_preprocessor_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/calculators/tensor/bert_preprocessor_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = bert_preprocessor_calculator.pb.cc
+  source_name_part = bert_preprocessor_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/inference_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/calculators/tensor/inference_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = inference_calculator.pb.cc
+  source_name_part = inference_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/regex_preprocessor_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/calculators/tensor/regex_preprocessor_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = regex_preprocessor_calculator.pb.cc
+  source_name_part = regex_preprocessor_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/tensors_to_classification_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/calculators/tensor/tensors_to_classification_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = tensors_to_classification_calculator.pb.cc
+  source_name_part = tensors_to_classification_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/tensors_to_detections_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/calculators/tensor/tensors_to_detections_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = tensors_to_detections_calculator.pb.cc
+  source_name_part = tensors_to_detections_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/ssd_anchors_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/calculators/tflite/ssd_anchors_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = ssd_anchors_calculator.pb.cc
+  source_name_part = ssd_anchors_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/detection_label_id_to_text_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/calculators/util/detection_label_id_to_text_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = detection_label_id_to_text_calculator.pb.cc
+  source_name_part = detection_label_id_to_text_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/non_max_suppression_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/calculators/util/non_max_suppression_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = non_max_suppression_calculator.pb.cc
+  source_name_part = non_max_suppression_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = calculator.pb.cc
+  source_name_part = calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/calculator_options.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/calculator_options.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = calculator_options.pb.cc
+  source_name_part = calculator_options.pb
+build obj/third_party/mediapipe/mediapipe_proto/proto_descriptor.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/deps/proto_descriptor.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = proto_descriptor.pb.cc
+  source_name_part = proto_descriptor.pb
+build obj/third_party/mediapipe/mediapipe_proto/rasterization.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/formats/annotation/rasterization.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = rasterization.pb.cc
+  source_name_part = rasterization.pb
+build obj/third_party/mediapipe/mediapipe_proto/classification.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/formats/classification.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = classification.pb.cc
+  source_name_part = classification.pb
+build obj/third_party/mediapipe/mediapipe_proto/detection.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/formats/detection.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = detection.pb.cc
+  source_name_part = detection.pb
+build obj/third_party/mediapipe/mediapipe_proto/image_format.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/formats/image_format.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = image_format.pb.cc
+  source_name_part = image_format.pb
+build obj/third_party/mediapipe/mediapipe_proto/location_data.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/formats/location_data.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = location_data.pb.cc
+  source_name_part = location_data.pb
+build obj/third_party/mediapipe/mediapipe_proto/anchor.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/formats/object_detection/anchor.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = anchor.pb.cc
+  source_name_part = anchor.pb
+build obj/third_party/mediapipe/mediapipe_proto/mediapipe_options.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/mediapipe_options.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = mediapipe_options.pb.cc
+  source_name_part = mediapipe_options.pb
+build obj/third_party/mediapipe/mediapipe_proto/packet_factory.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/packet_factory.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = packet_factory.pb.cc
+  source_name_part = packet_factory.pb
+build obj/third_party/mediapipe/mediapipe_proto/packet_generator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/packet_generator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = packet_generator.pb.cc
+  source_name_part = packet_generator.pb
+build obj/third_party/mediapipe/mediapipe_proto/status_handler.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/status_handler.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = status_handler.pb.cc
+  source_name_part = status_handler.pb
+build obj/third_party/mediapipe/mediapipe_proto/stream_handler.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/stream_handler.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = stream_handler.pb.cc
+  source_name_part = stream_handler.pb
+build obj/third_party/mediapipe/mediapipe_proto/default_input_stream_handler.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/stream_handler/default_input_stream_handler.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = default_input_stream_handler.pb.cc
+  source_name_part = default_input_stream_handler.pb
+build obj/third_party/mediapipe/mediapipe_proto/thread_pool_executor.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/thread_pool_executor.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = thread_pool_executor.pb.cc
+  source_name_part = thread_pool_executor.pb
+build obj/third_party/mediapipe/mediapipe_proto/calculator_graph_template.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/tool/calculator_graph_template.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = calculator_graph_template.pb.cc
+  source_name_part = calculator_graph_template.pb
+build obj/third_party/mediapipe/mediapipe_proto/field_data.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/tool/field_data.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = field_data.pb.cc
+  source_name_part = field_data.pb
+build obj/third_party/mediapipe/mediapipe_proto/packet_generator_wrapper_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/framework/tool/packet_generator_wrapper_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = packet_generator_wrapper_calculator.pb.cc
+  source_name_part = packet_generator_wrapper_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/gl_context_options.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/gpu/gl_context_options.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = gl_context_options.pb.cc
+  source_name_part = gl_context_options.pb
+build obj/third_party/mediapipe/mediapipe_proto/gpu_origin.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/gpu/gpu_origin.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = gpu_origin.pb.cc
+  source_name_part = gpu_origin.pb
+build obj/third_party/mediapipe/mediapipe_proto/classification_aggregation_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/components/calculators/classification_aggregation_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = classification_aggregation_calculator.pb.cc
+  source_name_part = classification_aggregation_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/score_calibration_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/components/calculators/score_calibration_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = score_calibration_calculator.pb.cc
+  source_name_part = score_calibration_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/classifications.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/components/containers/proto/classifications.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = classifications.pb.cc
+  source_name_part = classifications.pb
+build obj/third_party/mediapipe/mediapipe_proto/classification_postprocessing_graph_options.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/components/processors/proto/classification_postprocessing_graph_options.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = classification_postprocessing_graph_options.pb.cc
+  source_name_part = classification_postprocessing_graph_options.pb
+build obj/third_party/mediapipe/mediapipe_proto/classifier_options.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/components/processors/proto/classifier_options.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = classifier_options.pb.cc
+  source_name_part = classifier_options.pb
+build obj/third_party/mediapipe/mediapipe_proto/detection_postprocessing_graph_options.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/components/processors/proto/detection_postprocessing_graph_options.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = detection_postprocessing_graph_options.pb.cc
+  source_name_part = detection_postprocessing_graph_options.pb
+build obj/third_party/mediapipe/mediapipe_proto/detector_options.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/components/processors/proto/detector_options.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = detector_options.pb.cc
+  source_name_part = detector_options.pb
+build obj/third_party/mediapipe/mediapipe_proto/text_model_type.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/components/processors/proto/text_model_type.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = text_model_type.pb.cc
+  source_name_part = text_model_type.pb
+build obj/third_party/mediapipe/mediapipe_proto/text_preprocessing_graph_options.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/components/processors/proto/text_preprocessing_graph_options.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = text_preprocessing_graph_options.pb.cc
+  source_name_part = text_preprocessing_graph_options.pb
+build obj/third_party/mediapipe/mediapipe_proto/acceleration.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/core/proto/acceleration.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = acceleration.pb.cc
+  source_name_part = acceleration.pb
+build obj/third_party/mediapipe/mediapipe_proto/base_options.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/core/proto/base_options.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = base_options.pb.cc
+  source_name_part = base_options.pb
+build obj/third_party/mediapipe/mediapipe_proto/external_file.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/core/proto/external_file.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = external_file.pb.cc
+  source_name_part = external_file.pb
+build obj/third_party/mediapipe/mediapipe_proto/inference_subgraph.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/core/proto/inference_subgraph.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = inference_subgraph.pb.cc
+  source_name_part = inference_subgraph.pb
+build obj/third_party/mediapipe/mediapipe_proto/model_resources_calculator.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/core/proto/model_resources_calculator.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = model_resources_calculator.pb.cc
+  source_name_part = model_resources_calculator.pb
+build obj/third_party/mediapipe/mediapipe_proto/text_classifier_graph_options.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/tasks/cc/text/text_classifier/proto/text_classifier_graph_options.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = text_classifier_graph_options.pb.cc
+  source_name_part = text_classifier_graph_options.pb
+build obj/third_party/mediapipe/mediapipe_proto/label_map.pb.o: cxx gen/third_party/mediapipe/src/mediapipe/util/label_map.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/third_party/mediapipe/mediapipe_proto_gen.stamp
+  source_file_part = label_map.pb.cc
+  source_name_part = label_map.pb
+
+build obj/third_party/mediapipe/libmediapipe_proto.a: alink obj/third_party/mediapipe/mediapipe_proto/flow_limiter_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/split_vector_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/callback_packet_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/bert_preprocessor_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/inference_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/regex_preprocessor_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/tensors_to_classification_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/tensors_to_detections_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/ssd_anchors_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/detection_label_id_to_text_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/non_max_suppression_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/calculator_options.pb.o obj/third_party/mediapipe/mediapipe_proto/proto_descriptor.pb.o obj/third_party/mediapipe/mediapipe_proto/rasterization.pb.o obj/third_party/mediapipe/mediapipe_proto/classification.pb.o obj/third_party/mediapipe/mediapipe_proto/detection.pb.o obj/third_party/mediapipe/mediapipe_proto/image_format.pb.o obj/third_party/mediapipe/mediapipe_proto/location_data.pb.o obj/third_party/mediapipe/mediapipe_proto/anchor.pb.o obj/third_party/mediapipe/mediapipe_proto/mediapipe_options.pb.o obj/third_party/mediapipe/mediapipe_proto/packet_factory.pb.o obj/third_party/mediapipe/mediapipe_proto/packet_generator.pb.o obj/third_party/mediapipe/mediapipe_proto/status_handler.pb.o obj/third_party/mediapipe/mediapipe_proto/stream_handler.pb.o obj/third_party/mediapipe/mediapipe_proto/default_input_stream_handler.pb.o obj/third_party/mediapipe/mediapipe_proto/thread_pool_executor.pb.o obj/third_party/mediapipe/mediapipe_proto/calculator_graph_template.pb.o obj/third_party/mediapipe/mediapipe_proto/field_data.pb.o obj/third_party/mediapipe/mediapipe_proto/packet_generator_wrapper_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/gl_context_options.pb.o obj/third_party/mediapipe/mediapipe_proto/gpu_origin.pb.o obj/third_party/mediapipe/mediapipe_proto/classification_aggregation_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/score_calibration_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/classifications.pb.o obj/third_party/mediapipe/mediapipe_proto/classification_postprocessing_graph_options.pb.o obj/third_party/mediapipe/mediapipe_proto/classifier_options.pb.o obj/third_party/mediapipe/mediapipe_proto/detection_postprocessing_graph_options.pb.o obj/third_party/mediapipe/mediapipe_proto/detector_options.pb.o obj/third_party/mediapipe/mediapipe_proto/text_model_type.pb.o obj/third_party/mediapipe/mediapipe_proto/text_preprocessing_graph_options.pb.o obj/third_party/mediapipe/mediapipe_proto/acceleration.pb.o obj/third_party/mediapipe/mediapipe_proto/base_options.pb.o obj/third_party/mediapipe/mediapipe_proto/external_file.pb.o obj/third_party/mediapipe/mediapipe_proto/inference_subgraph.pb.o obj/third_party/mediapipe/mediapipe_proto/model_resources_calculator.pb.o obj/third_party/mediapipe/mediapipe_proto/text_classifier_graph_options.pb.o obj/third_party/mediapipe/mediapipe_proto/label_map.pb.o | ../../third_party/llvm-build/Release+Asserts/lib/clang/19/lib/x86_64-unknown-linux-gnu/libclang_rt.builtins.a ../../build/config/unsafe_buffers_paths.txt || ./libthird_party_protobuf_protobuf_lite.so.TOC obj/third_party/mediapipe/mediapipe_proto_gen.stamp obj/third_party/mediapipe/any_lite_proto_impl.stamp
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/third_party/mediapipe

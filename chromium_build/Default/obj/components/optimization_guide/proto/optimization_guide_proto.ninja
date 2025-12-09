@@ -1,0 +1,112 @@
+defines = -DDCHECK_ALWAYS_ON=1 -DUSE_UDEV -DUSE_AURA=1 -DUSE_GLIB=1 -DUSE_OZONE=1 -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_GNU_SOURCE -D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_EXTENSIVE -DCR_CLANG_REVISION=\"llvmorg-19-init-6501-g5b544b51-1\" -DCOMPONENT_BUILD -DCR_LIBCXX_REVISION=6ddb5cb9499f29383155d7ce6b31f7d1102e6ed9 -DCR_SYSROOT_KEY=20230611T210420Z-2 -D_DEBUG -DDYNAMIC_ANNOTATIONS_ENABLED=1 -DGOOGLE_PROTOBUF_NO_RTTI -DGOOGLE_PROTOBUF_NO_STATIC_INITIALIZER -DGOOGLE_PROTOBUF_INTERNAL_DONATE_STEAL_INLINE=0 -DHAVE_PTHREAD -DPROTOBUF_USE_DLLS
+include_dirs = -I../.. -Igen -I../../buildtools/third_party/libc++ -I../../third_party/protobuf/src -Igen/protoc_out -Igen/third_party/metrics_proto
+cflags = -Wall -Wextra -Wimplicit-fallthrough -Wextra-semi -Wunreachable-code-aggressive -Wthread-safety -Wno-missing-field-initializers -Wno-unused-parameter -Wno-psabi -Wloop-analysis -Wno-unneeded-internal-declaration -Wno-cast-function-type -Wno-ignored-pragma-optimize -Wno-deprecated-builtins -Wno-bitfield-constant-conversion -Wno-deprecated-this-capture -Wno-invalid-offsetof -Wno-vla-extension -Wno-thread-safety-reference-return -Wshadow -Werror -fno-delete-null-pointer-checks -fno-ident -fno-strict-aliasing -fstack-protector -funwind-tables -fPIC -pthread -fcolor-diagnostics -fmerge-all-constants -fcrash-diagnostics-dir=../../tools/clang/crashreports -mllvm -instcombine-lower-dbg-declare=0 -mllvm -split-threshold-for-reg-with-hint=0 -ffp-contract=off -fcomplete-member-pointers -m64 -msse3 -Wno-builtin-macro-redefined -D__DATE__= -D__TIME__= -D__TIMESTAMP__= -ffile-compilation-dir=. -no-canonical-prefixes -ftrivial-auto-var-init=pattern -O0 -fno-omit-frame-pointer -gdwarf-4 -g2 -gdwarf-aranges -gsplit-dwarf -ggnu-pubnames -Xclang -fuse-ctor-homing -fvisibility=hidden -Wheader-hygiene -Wstring-conversion -Wtautological-overlap-compare -Xclang -add-plugin -Xclang find-bad-constructs -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ref-template-as-trivial-member -Xclang -plugin-arg-find-bad-constructs -Xclang check-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang check-allow-auto-typedefs-better-nested -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-to-stack-allocated -Xclang -plugin-arg-find-bad-constructs -Xclang disable-check-raw-ptr-to-stack-allocated-error -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=tools/ -Xclang -plugin-arg-find-bad-constructs -Xclang raw-ptr-exclude-path=/third_party/dawn/ -Xclang -plugin-arg-find-bad-constructs -Xclang check-ipc -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ptr-fields -Xclang -plugin-arg-find-bad-constructs -Xclang check-raw-ref-fields -Xclang -add-plugin -Xclang unsafe-buffers -Xclang -plugin-arg-unsafe-buffers -Xclang ../../build/config/unsafe_buffers_paths.txt -DPROTOBUF_ALLOW_DEPRECATED=1
+cflags_cc = -Wenum-compare-conditional -Wno-c++11-narrowing-const-reference -Wno-undefined-bool-conversion -Wno-tautological-undefined-compare -std=c++20 -Wno-trigraphs -gsimple-template-names -fno-exceptions -fno-rtti -nostdinc++ -isystem../../third_party/libc++/src/include -isystem../../third_party/libc++abi/src/include --sysroot=../../build/linux/debian_bullseye_amd64-sysroot -fvisibility-inlines-hidden
+label_name = optimization_guide_proto
+target_out_dir = obj/components/optimization_guide/proto
+target_output_name = liboptimization_guide_proto
+
+build obj/components/optimization_guide/proto/optimization_guide_proto/autocomplete_scoring_model_metadata.pb.o: cxx gen/components/optimization_guide/proto/autocomplete_scoring_model_metadata.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = autocomplete_scoring_model_metadata.pb.cc
+  source_name_part = autocomplete_scoring_model_metadata.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/autofill_field_classification_model_metadata.pb.o: cxx gen/components/optimization_guide/proto/autofill_field_classification_model_metadata.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = autofill_field_classification_model_metadata.pb.cc
+  source_name_part = autofill_field_classification_model_metadata.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/client_side_phishing_model_metadata.pb.o: cxx gen/components/optimization_guide/proto/client_side_phishing_model_metadata.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = client_side_phishing_model_metadata.pb.cc
+  source_name_part = client_side_phishing_model_metadata.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/common_types.pb.o: cxx gen/components/optimization_guide/proto/common_types.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = common_types.pb.cc
+  source_name_part = common_types.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/descriptors.pb.o: cxx gen/components/optimization_guide/proto/descriptors.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = descriptors.pb.cc
+  source_name_part = descriptors.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/common_quality_data.pb.o: cxx gen/components/optimization_guide/proto/features/common_quality_data.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = common_quality_data.pb.cc
+  source_name_part = common_quality_data.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/compose.pb.o: cxx gen/components/optimization_guide/proto/features/compose.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = compose.pb.cc
+  source_name_part = compose.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/default.pb.o: cxx gen/components/optimization_guide/proto/features/default.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = default.pb.cc
+  source_name_part = default.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/history_document.pb.o: cxx gen/components/optimization_guide/proto/features/history_document.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = history_document.pb.cc
+  source_name_part = history_document.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/history_query.pb.o: cxx gen/components/optimization_guide/proto/features/history_query.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = history_query.pb.cc
+  source_name_part = history_query.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/tab_organization.pb.o: cxx gen/components/optimization_guide/proto/features/tab_organization.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = tab_organization.pb.cc
+  source_name_part = tab_organization.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/text_safety.pb.o: cxx gen/components/optimization_guide/proto/features/text_safety.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = text_safety.pb.cc
+  source_name_part = text_safety.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/wallpaper_search.pb.o: cxx gen/components/optimization_guide/proto/features/wallpaper_search.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = wallpaper_search.pb.cc
+  source_name_part = wallpaper_search.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/hint_cache.pb.o: cxx gen/components/optimization_guide/proto/hint_cache.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = hint_cache.pb.cc
+  source_name_part = hint_cache.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/hints.pb.o: cxx gen/components/optimization_guide/proto/hints.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = hints.pb.cc
+  source_name_part = hints.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/loading_predictor_metadata.pb.o: cxx gen/components/optimization_guide/proto/loading_predictor_metadata.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = loading_predictor_metadata.pb.cc
+  source_name_part = loading_predictor_metadata.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/model_execution.pb.o: cxx gen/components/optimization_guide/proto/model_execution.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = model_execution.pb.cc
+  source_name_part = model_execution.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/model_quality_metadata.pb.o: cxx gen/components/optimization_guide/proto/model_quality_metadata.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = model_quality_metadata.pb.cc
+  source_name_part = model_quality_metadata.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/model_quality_service.pb.o: cxx gen/components/optimization_guide/proto/model_quality_service.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = model_quality_service.pb.cc
+  source_name_part = model_quality_service.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/models.pb.o: cxx gen/components/optimization_guide/proto/models.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = models.pb.cc
+  source_name_part = models.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/on_device_base_model_metadata.pb.o: cxx gen/components/optimization_guide/proto/on_device_base_model_metadata.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = on_device_base_model_metadata.pb.cc
+  source_name_part = on_device_base_model_metadata.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/on_device_model_execution_config.pb.o: cxx gen/components/optimization_guide/proto/on_device_model_execution_config.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = on_device_model_execution_config.pb.cc
+  source_name_part = on_device_model_execution_config.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/on_device_tail_suggest_model_metadata.pb.o: cxx gen/components/optimization_guide/proto/on_device_tail_suggest_model_metadata.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = on_device_tail_suggest_model_metadata.pb.cc
+  source_name_part = on_device_tail_suggest_model_metadata.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/page_entities_metadata.pb.o: cxx gen/components/optimization_guide/proto/page_entities_metadata.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = page_entities_metadata.pb.cc
+  source_name_part = page_entities_metadata.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/page_topics_model_metadata.pb.o: cxx gen/components/optimization_guide/proto/page_topics_model_metadata.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = page_topics_model_metadata.pb.cc
+  source_name_part = page_topics_model_metadata.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/page_topics_override_list.pb.o: cxx gen/components/optimization_guide/proto/page_topics_override_list.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = page_topics_override_list.pb.cc
+  source_name_part = page_topics_override_list.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/push_notification.pb.o: cxx gen/components/optimization_guide/proto/push_notification.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = push_notification.pb.cc
+  source_name_part = push_notification.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/redaction.pb.o: cxx gen/components/optimization_guide/proto/redaction.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = redaction.pb.cc
+  source_name_part = redaction.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/salient_image_metadata.pb.o: cxx gen/components/optimization_guide/proto/salient_image_metadata.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = salient_image_metadata.pb.cc
+  source_name_part = salient_image_metadata.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/string_value.pb.o: cxx gen/components/optimization_guide/proto/string_value.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = string_value.pb.cc
+  source_name_part = string_value.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/substitution.pb.o: cxx gen/components/optimization_guide/proto/substitution.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = substitution.pb.cc
+  source_name_part = substitution.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/text_safety_model_metadata.pb.o: cxx gen/components/optimization_guide/proto/text_safety_model_metadata.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = text_safety_model_metadata.pb.cc
+  source_name_part = text_safety_model_metadata.pb
+build obj/components/optimization_guide/proto/optimization_guide_proto/visual_search_model_metadata.pb.o: cxx gen/components/optimization_guide/proto/visual_search_model_metadata.pb.cc | ../../build/config/unsafe_buffers_paths.txt || obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  source_file_part = visual_search_model_metadata.pb.cc
+  source_name_part = visual_search_model_metadata.pb
+
+build obj/components/optimization_guide/proto/liboptimization_guide_proto.a: alink obj/components/optimization_guide/proto/optimization_guide_proto/autocomplete_scoring_model_metadata.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/autofill_field_classification_model_metadata.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/client_side_phishing_model_metadata.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/common_types.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/descriptors.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/common_quality_data.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/compose.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/default.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/history_document.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/history_query.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/tab_organization.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/text_safety.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/wallpaper_search.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/hint_cache.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/hints.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/loading_predictor_metadata.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/model_execution.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/model_quality_metadata.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/model_quality_service.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/models.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/on_device_base_model_metadata.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/on_device_model_execution_config.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/on_device_tail_suggest_model_metadata.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/page_entities_metadata.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/page_topics_model_metadata.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/page_topics_override_list.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/push_notification.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/redaction.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/salient_image_metadata.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/string_value.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/substitution.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/text_safety_model_metadata.pb.o obj/components/optimization_guide/proto/optimization_guide_proto/visual_search_model_metadata.pb.o | ../../third_party/llvm-build/Release+Asserts/lib/clang/19/lib/x86_64-unknown-linux-gnu/libclang_rt.builtins.a ../../build/config/unsafe_buffers_paths.txt || ./libthird_party_protobuf_protobuf_lite.so.TOC obj/components/optimization_guide/proto/optimization_guide_proto_gen.stamp
+  arflags = -T
+  output_extension = .a
+  output_dir = obj/components/optimization_guide/proto

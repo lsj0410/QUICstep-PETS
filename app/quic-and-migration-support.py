@@ -52,7 +52,7 @@ def test_h3(row):
         for i in [0, 1]:
             domain = f'https://{www[i]}{row[1]}'
             nonlocal process
-            process_list = ['/home/ubuntu/Default/quic_client',
+            process_list = ['../chromium_build/Default/quic_client',
                             '--disable_certificate_verification',
                             '--quiet',
                             '--num_requests=2',

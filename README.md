@@ -69,7 +69,7 @@ First ensure that UDP ingress traffic on port 51820 is allowed for both client a
 Clone this repository at the client and install necessary packages.
 
 ```bash
-git clone github.com/lsj0410/QUICstep-PETS
+git clone https://github.com/lsj0410/QUICstep-PETS
 cd QUICstep-PETS
 pip3 install -r requirements.txt
 cd quicstep-config

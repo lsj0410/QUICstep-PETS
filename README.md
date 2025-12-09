@@ -137,7 +137,7 @@ Once complete pull down the QUICstep interface with `wg-quick down wg_qs`.
 
 #### Main Result 1: QUIC and connection migration support
 
-Around 20% of domains support QUIC, and around 10% of QUIC supporting domains support connection migration.
+Around 22% of domains support QUIC, and around 13% of QUIC supporting domains support connection migration.
 Corresponds to Figure 3, Experiment 1.
 
 #### Main Result 2: Page load time
@@ -162,10 +162,12 @@ Corresponds to Figure 7, Experiment 2.
 
 ```bash
 cd app
-python3 quic-and-migration-support.py
+python3 quic-and-migration-support.py -f random_1.csv
 ```
 
-Defaults to using 10 workers and testing 1000 websites, can be configured by adding -w [worker-count] or -d [domain-count] when running.
+Defaults to using 10 workers, can be configured by adding -w [worker-count] when running.
+`random_1.csv` and `random_2.csv` each contain 1000 randomly sampled domains from `tranco_20251119.csv`.
+The user may also run `python3 quic-and-migration-support.py -d [domain-count]` to sample `domain-count` domains during runtime.
 Prints number of QUIC and port migration supporting domains to terminal and outputs a csv file containing results for each domain.
 
 #### Experiment 2: Reproducing figures from raw data

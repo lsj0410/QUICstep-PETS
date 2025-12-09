@@ -3,7 +3,6 @@ import csv
 import os
 from datetime import datetime
 from datetime import date
-from itertools import islice
 from threading import Thread
 from multiprocessing import Pool
 from multiprocessing import cpu_count
@@ -23,6 +22,10 @@ parser.add_argument('--domain_count', '-d',
                     type=int,
                     help='number of domains to test; default 1K',
                     default=1000)
+parser.add_argument('--test_file', '-f',
+                    type=str,
+                    help='input file containing test domains; random_1.csv, random_2.csv are available',
+                    default='')
 parser.add_argument('--worker_count', '-w',
                     type=int,
                     help='number of workers; default 10',
@@ -30,6 +33,7 @@ parser.add_argument('--worker_count', '-w',
 args = parser.parse_args()
 num = args.domain_count
 workers = args.worker_count
+fname = args.test_file
 
 def test_h3(row):
 
@@ -110,10 +114,14 @@ if __name__ == '__main__':
     write = open(otxt, 'w')
     write.write('Num\tDomain\tQUIC\tConnection migration\tIP\tASN\n')
     write.close()
-    
-    with open(trancofile) as csvfile:
-        csv_reader = list(csv.reader(csvfile))
-        top_rows = random.sample(csv_reader, num)
+
+    if len(fname) > 0:
+        with open(fname) as csvfile:
+            top_rows = list(csv.reader(csvfile))
+    else:
+        with open(trancofile) as csvfile:
+            csv_reader = list(csv.reader(csvfile))
+            top_rows = random.sample(csv_reader, num)
 
     pool = Pool(workers)
     h3_domains = pool.map(test_h3, top_rows)
